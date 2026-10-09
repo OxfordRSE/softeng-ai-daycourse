@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 690" width="680" height="690" role="img" aria-label="Three-stage test driven development cycle: write failing test, make the test pass, refactor">
+<g stroke="white" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+<!-- top red sweeping arrow -->
+<path fill="#dc6966" d="M68 216 C102 150 164 98 240 70 C254 29 289 5 338 5 C385 5 421 28 433 69 C514 98 580 157 616 223 L603 264 L545 254 C524 210 482 171 432 154 C410 188 379 211 340 212 C298 213 263 192 245 155 C202 174 165 205 139 254 L123 211 Z"/>
+<!-- right green curved arrow -->
+<path fill="#80b892" d="M622 231 C655 300 664 365 644 445 C669 480 674 530 646 568 C617 608 569 617 541 608 C493 645 434 667 368 683 L322 645 L352 600 C400 597 437 582 472 557 C451 522 457 473 486 440 C507 417 535 406 569 407 C580 357 572 307 550 266 L605 275 Z"/>
+<!-- left blue curved arrow -->
+<path fill="#679ff1" d="M61 228 L119 216 L135 269 C113 308 107 358 114 405 C158 404 192 428 210 468 C224 499 221 529 204 553 C245 580 288 595 342 599 L319 644 L365 680 C280 679 203 654 143 606 C108 617 70 613 42 589 C5 560 -2 496 40 439 C22 373 26 290 61 228 Z"/>
+</g>
+<g font-family="Arial, Helvetica, sans-serif" font-size="37" fill="white" text-anchor="middle">
+<text x="340" y="101"><tspan x="340">Write</tspan><tspan x="340" dy="43">failing test</tspan></text>
+<text x="555" y="504"><tspan x="555">Make the</tspan><tspan x="555" dy="44">test pass</tspan></text>
+<text x="113" y="524">Refactor</text>
+</g>
+</svg>

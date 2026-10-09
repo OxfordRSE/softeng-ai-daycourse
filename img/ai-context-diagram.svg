@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="850" viewBox="0 0 1500 850" role="img" aria-label="Chat and documents build a shared context around AI, informing its response">
+<defs>
+  <linearGradient id="chat" x2="1" y2="1"><stop stop-color="#e6f3ff"/><stop offset="1" stop-color="#c9e2ff"/></linearGradient>
+  <linearGradient id="docs" x2="1" y2="1"><stop stop-color="#e5f8ef"/><stop offset="1" stop-color="#c5ead9"/></linearGradient>
+  <radialGradient id="context"><stop stop-color="#eee4ff" stop-opacity=".88"/><stop offset="1" stop-color="#f3ecff" stop-opacity=".48"/></radialGradient>
+  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#4d93ee"/></marker>
+  <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#36a47a"/></marker>
+  <marker id="arrowPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#8055d9"/></marker>
+</defs>
+<rect width="1500" height="850" fill="white"/>
+<!-- Chat and documents are clusters, not a linear processing pipeline -->
+<path d="M420 260 C515 240 485 340 608 365" fill="none" stroke="#4d93ee" stroke-width="7" stroke-linecap="round" marker-end="url(#arrowBlue)"/>
+<path d="M420 625 C510 630 505 540 608 525" fill="none" stroke="#36a47a" stroke-width="7" stroke-linecap="round" marker-end="url(#arrowGreen)"/>
+<path d="M1125 425 C1185 425 1195 425 1240 425" fill="none" stroke="#8055d9" stroke-width="7" stroke-linecap="round" marker-end="url(#arrowPurple)"/>
+<!-- chat -->
+<rect x="65" y="105" width="365" height="285" rx="65" fill="url(#chat)"/>
+<text x="110" y="165" font-family="Arial,sans-serif" font-weight="700" font-size="36" fill="#155b9f">Chat</text>
+<rect x="105" y="195" width="245" height="60" rx="19" fill="#9ac7fb"/><path d="M120 255l-12 15 36-15" fill="#9ac7fb"/>
+<path d="M132 216h166M132 236h115" stroke="#438de4" stroke-width="6" stroke-linecap="round"/>
+<rect x="150" y="272" width="232" height="57" rx="17" fill="#fff" opacity=".88"/><path d="M175 291h172M175 311h127" stroke="#aabbd0" stroke-width="6" stroke-linecap="round"/>
+<rect x="106" y="340" width="225" height="30" rx="13" fill="#9ac7fb" opacity=".85"/><path d="M125 355h153" stroke="#438de4" stroke-width="5" stroke-linecap="round"/>
+<!-- documents -->
+<rect x="65" y="460" width="365" height="290" rx="70" fill="url(#docs)"/>
+<text x="110" y="520" font-family="Arial,sans-serif" font-weight="700" font-size="36" fill="#147750">Documents</text>
+<path d="M130 550h132l31 32v118H130z" fill="#fff" stroke="#79bba2" stroke-width="3"/><path d="M262 550v32h31" fill="none" stroke="#79bba2" stroke-width="3"/>
+<path d="M155 604h110M155 629h96M155 654h110M155 679h68" stroke="#aebccc" stroke-width="8" stroke-linecap="round"/>
+<rect x="298" y="575" width="85" height="123" rx="12" fill="#b4e4ce"/><path d="M316 604h48M316 628h48M316 652h39M316 675h46" stroke="#6ebc99" stroke-width="7" stroke-linecap="round"/>
+<!-- context is the space surrounding the AI -->
+<path d="M700 160C810 110 1000 130 1085 240C1160 315 1160 520 1090 630C1010 745 805 730 700 670C600 630 565 540 575 425C570 310 605 205 700 160Z" fill="url(#context)" stroke="#b29bf3" stroke-width="4" stroke-dasharray="13 13"/>
+<text x="850" y="210" text-anchor="middle" font-family="Arial,sans-serif" font-size="39" font-weight="700" fill="#5830ad">Context</text>
+<!-- overlapping contextual material -->
+<g opacity=".8">
+<rect x="635" y="295" width="150" height="113" rx="16" fill="#bdebd6" transform="rotate(11 710 352)"/>
+<path d="M664 332h90M664 355h75M664 378h84" stroke="#65bd9c" stroke-width="7" stroke-linecap="round"/>
+<rect x="900" y="270" width="155" height="115" rx="16" fill="#d9ccff" transform="rotate(-8 978 327)"/>
+<path d="M927 306h101M927 331h84M927 356h95" stroke="#ac8af2" stroke-width="7" stroke-linecap="round"/>
+<rect x="640" y="515" width="150" height="105" rx="16" fill="#c6ddff" transform="rotate(-8 715 568)"/>
+<path d="M664 548h98M664 571h76M664 594h91" stroke="#85acee" stroke-width="7" stroke-linecap="round"/>
+<rect x="935" y="505" width="145" height="112" rx="16" fill="#c9ebdb" transform="rotate(9 1007 560)"/>
+<path d="M955 540h98M955 563h83M955 587h93" stroke="#73bea1" stroke-width="7" stroke-linecap="round"/>
+</g>
+<circle cx="855" cy="445" r="124" fill="#e4d5ff" stroke="#9b79eb" stroke-width="5"/>
+<path d="M854 389c-26-40-77-10-68 23-30 12-27 48-6 58-6 37 38 55 62 25l12 12 12-12c24 30 68 12 62-25 21-10 24-46-6-58 9-33-42-63-68-23v118" fill="none" stroke="#7146c7" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="855" y="554" text-anchor="middle" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#5830ad">AI</text>
+<!-- response -->
+<rect x="1250" y="328" width="205" height="194" rx="26" fill="#f5f7fb" stroke="#d3dce9" stroke-width="3"/>
+<text x="1352" y="390" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#24395b">Response</text>
+<path d="M1285 428h140M1285 455h125M1285 482h92" stroke="#aebbd0" stroke-width="8" stroke-linecap="round"/>
+</svg>

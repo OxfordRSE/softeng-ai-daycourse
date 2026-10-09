@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="864" height="868" viewBox="0 0 864 868">
+  <defs>
+    <linearGradient id="funnelGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dfead3"/>
+      <stop offset="100%" stop-color="#4a8a2d"/>
+    </linearGradient>
+
+    <marker id="arrowhead" markerWidth="12" markerHeight="12"
+            refX="8" refY="6" orient="auto">
+      <path d="M0,0 L10,6 L0,12 Z" fill="#000"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="864" height="868" fill="#fff"/>
+
+  <!-- Funnel / adoption shape -->
+  <path
+    d="M118 91
+       C220 88 310 92 432 92
+       C554 92 648 90 752 91
+       C680 91 617 161 562 252
+       C506 345 472 461 457 576
+       C450 626 446 679 446 730
+       L416 730
+       C416 678 412 626 405 576
+       C390 461 358 345 302 252
+       C247 161 180 92 118 91 Z"
+    fill="url(#funnelGradient)"
+  />
+
+  <!-- Title -->
+  <text x="433" y="63"
+        text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="58"
+        font-weight="700"
+        fill="#000">
+    Users
+  </text>
+
+  <!-- Labels + guide lines -->
+  <g font-family="Arial, Helvetica, sans-serif"
+     font-size="42"
+     font-weight="700"
+     fill="#000">
+
+    <text x="52" y="104">Endemic</text>
+    <line x1="270" y1="91" x2="575" y2="91"
+          stroke="#000" stroke-width="6"
+          stroke-dasharray="28 16"/>
+
+    <text x="2" y="275">Community</text>
+    <line x1="270" y1="263" x2="575" y2="263"
+          stroke="#000" stroke-width="6"
+          stroke-dasharray="28 16"/>
+
+    <text x="205" y="456">Lab</text>
+    <line x1="270" y1="443" x2="575" y2="443"
+          stroke="#000" stroke-width="6"
+          stroke-dasharray="28 16"/>
+
+    <text x="213" y="650">You</text>
+    <line x1="270" y1="637" x2="575" y2="637"
+          stroke="#000" stroke-width="6"
+          stroke-dasharray="28 16"/>
+  </g>
+
+  <!-- Time axis -->
+  <line x1="797" y1="470" x2="797" y2="150"
+        stroke="#000"
+        stroke-width="6"
+        marker-end="url(#arrowhead)"/>
+
+  <text x="840" y="610"
+        transform="rotate(-90 806 610)"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="46"
+        font-weight="700"
+        fill="#000"
+        text-anchor="middle">
+    Time
+  </text>
+</svg>
