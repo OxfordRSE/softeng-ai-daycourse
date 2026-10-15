@@ -13,47 +13,31 @@ routeAlias: introduction
 
 <span />
 
-Research software might be:
-
-<div class="grid grid-cols-2 gap-6 mt-8">
-
-<div class="bg-gray-100 pl-5">
-
-### A few lines of Python
-
-A script that generates a figure for a paper.
-
+<div class="grid grid-cols-2 gap-x-16 gap-y-12 mt-10">
+  <div class="border-l-4 border-blue-500 pl-5">
+    <div class="text-2xl font-semibold mb-3">A short Python script</div>
+    <div class="text-gray-600">Generates a key figure for a paper.</div>
+  </div>
+  <div class="border-l-4 border-blue-500 pl-5">
+    <div class="text-2xl font-semibold mb-3">An exploratory notebook</div>
+    <div class="text-gray-600">Investigates a new research question.</div>
+  </div>
+  <div class="border-l-4 border-blue-500 pl-5">
+    <div class="text-2xl font-semibold mb-3">A shared analysis pipeline</div>
+    <div class="text-gray-600">Processes data for an entire research group.</div>
+  </div>
+  <div class="border-l-4 border-blue-500 pl-5">
+    <div class="text-2xl font-semibold mb-3">A research application</div>
+    <div class="text-gray-600">Supports researchers across institutions.</div>
+  </div>
 </div>
 
-<div class="bg-gray-100 pl-5">
-
-### A Jupyter notebook
-
-An exploratory analysis of experimental data.
-
-</div>
-
-<div class="bg-gray-100 pl-5">
-
-### A shared analysis pipeline
-
-Software used repeatedly by a research group.
-
-</div>
-
-<div class="bg-gray-100 pl-5">
-
-### A research application
-
-Software used by collaborators or the wider community.
-
-</div>
-
-</div>
+<br />
+<br />
 
 ::v-click
 ::note
-All are research software. But do they all need the same level of engineering?
+All are research software, but do they all require the same level of engineering?
 ::
 
 ---
@@ -153,6 +137,10 @@ The software may be one-off and unpolished, while its output is scientifically c
 **What failed here?**
 ::
 
+::
+
+::v-click
+
 - Version control
 - Environment management
 - Dependencies
@@ -184,6 +172,8 @@ Years later:
 ::question
 **What failed here?**
 ::
+::
+::v-click
 - Version control
 - Testing
 - Robustness to breakages
@@ -279,11 +269,7 @@ Code can be produced much faster than we can understand or verify it.
 
 ::bottom::
 
-<div class="mt-8 text-center text-xl">
-
 The bottleneck shifts from **producing code** to **evaluating it**.
-
-</div>
 
 ::v-click
 ::note
@@ -301,50 +287,25 @@ This becomes particularly important when we discuss collaboration: a contributio
 
 ---
 
-<style>
-table td, table th {
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
-}
-table td {
-  font-size: 0.9rem !important;
-}
-table th {
-  font-size: 1.0rem !important;
-}
-</style>
-
-# AI assistance takes different forms
+# Working with AI
 
 <span />
 
-We can give AI progressively more context, tools and agency:
+AI can **suggest**, **implement** or **act on our behalf**.
 
-<div class="h-2"></div>
+The same capabilities may be available through chat, an IDE, a terminal or a cloud service.
 
-| **Chat** | **IDE assistance** | **Coding agent** | **Online assistants** |
-|---|---|---|---|
-| Discuss a problem | Work alongside source code | Inspect and change a repository | Work through GitHub |
-| Explore designs | Explain selected code | Plan and implement | Create branches and PRs |
-| Ask questions | Suggest local changes | Run tools and tests | Respond to issues and CI |
+What changes is how we supervise the work:
 
-<div class="h-2"></div>
+- **Human-directed:** We guide the interaction step by step.
+- **Human-supervised:** We delegate bounded tasks and review the results.
+- **More autonomous:** The agent performs multiple actions before returning for review.
 
-::center
-::small
-Increasing agency →
-::
-::
-
-<div class="h-2"></div>
-
+::v-click
 ::note
-**Review** and **human judgement** remain important at every level.
+As AI takes on more of the work, we shift from directing its actions to defining boundaries and evaluating outcomes
 ::
-
-<!--
-Steer agents through that code generation process.
--->
+::
 
 ---
 layout: two-cols-header
@@ -352,11 +313,11 @@ layout: two-cols-header
 
 # More agency, more need for engineering
 
-::left::
+::right::
 
 <img src="../img/agency-constraints.svg" class="w-full" />
 
-::right::
+::left::
 
 As AI moves from **suggesting** to **acting**, we need to define:
 
@@ -391,7 +352,7 @@ layout: two-cols-header
 
 ::left::
 
-A coding agent may pursue a goal through actions you did not realise you had delegated.
+An agent may pursue its objective through actions you never intended.
 
 ::center
 
@@ -432,21 +393,24 @@ A **goal** is not a **boundary**
   v-click
 >
 
-Agents were being capability-tested on a set of cybersecurity challenges. Instead, they:
+AI agents:
 
-- **exploited OpenAI infrastructure to escape onto the internet**
-- **created an unauthorised channel and formed a “swarm”**
-- **compromised an unrelated third-party cloud application**
-- **attacked Hugging Face, which was not an evaluation target**
-- **executed code on dozens of Hugging Face servers**
-- **gained root access and accessed private data and credentials**
+- **found unintended routes to access external systems**, despite operating restrictions
+- **interacted with Hugging Face infrastructure**, which was outside the evaluation targets
+- **obtained elevated access and exposed sensitive information**
 
 </CaseStudy>
 
 <!--
-A goal is not a boundary
+Giving an agent an objective does not define what it may
+do to achieve it.
 
-The way that you steer AI is through context and constraints.
+Context and instructions help steer behaviour, but technical
+permissions and isolation determine what actions are actually
+possible.
+
+The Hugging Face incident illustrates how intended restrictions
+can differ from effective operating boundaries.
 -->
 
 ---
@@ -493,15 +457,14 @@ AI can be very powerful, but also very costly!
 
 <span />
 
-When results are correct, people may care little about how they were produced.
+Results that confirm our expectations leave little reason to question them.
 
-When results are wrong, the process suddenly matters:
+But whether a result is **expected or surprising**, we should be able to establish:
 
-- What changed?
-- What was run?
+- What code and data were used?
 - What assumptions were made?
-- What evidence do we have?
-- Can we reproduce it?
+- What checks were performed?
+- Can we reproduce the result?
 
 ::note
 Good engineering leaves a trail that lets us answer those questions
@@ -523,11 +486,16 @@ Use AI to help encode domain knowledge. Be cautious about allowing it to halluci
 ::
 
 <!--
+A useful way to calibrate your expectations of AI is to ask it
+about something you know very well.
 
-One of the traps with AI is that an explanation can be very easy to recognise as plausible.
+Notice where its explanations are convincing but incomplete,
+oversimplified or simply wrong.
 
-That matters particularly when deciding whether an AI-generated explanation,
-test, or design suggestion is evidence you should rely on.
+Now consider how difficult those problems would be to recognise
+in an unfamiliar subject.
+
+Fluency and confidence are not evidence of correctness.
 -->
 
 ---

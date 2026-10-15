@@ -372,7 +372,7 @@ The failing test expresses the behaviour we want before we change the implementa
 
 So far, we have used AI to discuss problems and explore code.
 
-A **CLI coding agent** can work directly with a repository:
+A **coding agent** can work directly with a repository:
 
 <div class="w-140 mx-auto mt-8">
 
@@ -428,14 +428,16 @@ flowchart LR
 **Build mode:** implement the approved change.
 
 ::note
-**Review the plan before implementation, and inspect the result afterwards.**
+Review the plan before implementation and inspect the result afterwards
 ::
 
+---
+layout: two-cols-header
 ---
 
 # Practical 4b — Implement the behaviour
 
-<span />
+::left::
 
 You now have a **failing test that defines the required behaviour**.
 
@@ -448,6 +450,8 @@ Investigate why this test fails. Propose the smallest change needed to satisfy i
 ::
 
 Review the proposed plan. Does it address the requirement without introducing unnecessary changes?
+
+::right::
 
 Then switch to **Build mode**:
 
@@ -477,36 +481,12 @@ AI can be particularly useful here: it can inspect existing code and generate a 
 
 ::right::
 
-For important results, look for **independent evidence**:
-
-- a known-answer case
-- a limiting or boundary case
-- a published result
-- an independent calculation
-- physically or scientifically plausible behaviour
+**Going further:** you can use the CLI coding agent to generate a **characterisation test** for `find_duplicates`. Inspect the tests.
 
 ::bottom::
 
 ::note
 Characterisation tests tell us **what the software does**, not whether that behaviour is correct.
-::
-
----
-
-# Practical 4 — Characterise existing behaviour
-
-<span />
-
-**Going further:** you can use the CLI coding agent to generate a **characterisation test** for `find_duplicates`.
-
-The repository contains `find_duplicates`, whose behaviour is deliberately simplistic.
-
-Ask the AI agent to generate a **characterisation test** that captures what it currently does.
-
-Retain the test.
-
-::note
-Characterisation tests record **what the software does**, not whether that behaviour is correct.
 ::
 
 ---

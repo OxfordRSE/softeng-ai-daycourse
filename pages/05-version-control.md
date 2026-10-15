@@ -365,10 +365,10 @@ Can you explain the difference between:
 - **Repository history** — changes recorded in commits
 - **Branches** — alternative lines of development
 
-::question
-Where are your changes now and how would you recover an unwanted edit?
-::
-
 ::note
 Git helps us understand, record and recover changes
+::
+
+::question
+Where are your changes now and how would you recover an unwanted edit?
 ::

@@ -140,7 +140,7 @@ Dependencies can introduce:
 - further dependencies we did not choose directly
 
 ::note
-A compromised dependency executes with the permissions available to your software. That may include access to files, credentials and network services.
+A compromised dependency may access files, secrets, credentials, and network services.
 ::
 
 ---
@@ -513,7 +513,7 @@ There is no universal answer. Consider:
 - Supporting future development
 
 ::note
-**Isolation lets environments coexist; it does not resolve incompatibility.**
+Isolation lets environments coexist, it does not resolve incompatibility
 ::
 
 ---

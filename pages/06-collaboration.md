@@ -473,7 +473,7 @@ The contributor and maintainer may therefore see the same PR very differently.
 
 An online coding agent can propose an implementation for an issue.
 
-**Optional demonstration:** assign a small issue to the agent and inspect its pull request against the specification.
+**Demonstration:** assign a small issue to the agent and inspect its pull request against the specification.
 
 ::note
 Delegation is an option, not a requirement. Human review remains essential.
@@ -512,12 +512,12 @@ We have now:
 - reviewed the contribution;
 - decided whether to accept it.
 
-::question
-**What evidence justified your decision?**
+::note
+A pull request is a proposal. Acceptance remains a human decision.
 ::
 
-::note
-**A pull request is a proposal. Acceptance remains a human decision.**
+::question
+What evidence justified your decision?
 ::
 
 ---

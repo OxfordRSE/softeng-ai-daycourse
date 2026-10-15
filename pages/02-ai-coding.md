@@ -14,11 +14,9 @@ transition: none
 
 # Writing clean code
 
-<span />
-
-When asking AI to implement software, request code that is:
-
 ::left::
+
+Code quality is about more than correctness. We also want code that is understandable, maintainable and appropriate to its purpose.
 
 ::small
 
@@ -48,11 +46,9 @@ transition: none
 
 # Writing clean code
 
-<span />
-
-When asking AI to implement software, request code that is:
-
 ::left::
+
+Code quality is about more than correctness. We also want code that is understandable, maintainable and appropriate to its purpose.
 
 ::small
 
@@ -92,11 +88,9 @@ transition: none
 
 # Writing clean code
 
-<span />
-
-When asking AI to implement software, request code that is:
-
 ::left::
+
+Code quality is about more than correctness. We also want code that is understandable, maintainable and appropriate to its purpose.
 
 ::small
 
@@ -137,11 +131,9 @@ transition: none
 
 # Writing clean code
 
-<span />
-
-When asking AI to implement software, request code that is:
-
 ::left::
+
+Code quality is about more than correctness. We also want code that is understandable, maintainable and appropriate to its purpose.
 
 ::small
 
@@ -186,9 +178,9 @@ transition: none
 
 <span />
 
-When asking AI to implement software, request code that is:
-
 ::left::
+
+Code quality is about more than correctness. We also want code that is understandable, maintainable and appropriate to its purpose.
 
 ::small
 
@@ -205,7 +197,7 @@ When asking AI to implement software, request code that is:
 
 ::small
 
-New code should follow the conventions already established in the project.
+Follow established conventions. For Python, [PEP 8](https://peps.python.org/pep-0008/) provides widely recognised style guidance.
 
 Inconsistent:
 ```python
@@ -216,12 +208,9 @@ def CheckPressure(Value):
     ...
 ```
 
-Conventions:
-```text
-CamelCase
-snake_case
-kebab-case
-```
+::note
+Consistency reduces the effort needed to read and maintain code
+::
 
 ::
 
@@ -232,11 +221,9 @@ transition: none
 
 # Writing clean code
 
-<span />
-
-When asking AI to implement software, request code that is:
-
 ::left::
+
+Code quality is about more than correctness. We also want code that is understandable, maintainable and appropriate to its purpose.
 
 ::small
 
@@ -282,9 +269,9 @@ layout: two-cols-header
 
 <span />
 
-When asking AI to implement software, request code that is:
-
 ::left::
+
+Code quality is about more than correctness. We also want code that is understandable, maintainable and appropriate to its purpose.
 
 ::small
 
@@ -322,13 +309,16 @@ def check_temperature(value):
 
 ---
 layout: two-cols-header
+transition: none
 ---
 
 # Linters and autoformatters
 
 ::left::
 
-Tools can help us maintain code quality automatically.
+We don’t need to remember every formatting convention ourselves.
+
+Tools such as Ruff can apply consistent formatting automatically, including conventions informed by the Python style guide [PEP 8](https://peps.python.org/pep-0008/).
 
 **Linters** identify potential errors and violations of coding conventions.
 
@@ -336,18 +326,87 @@ Tools can help us maintain code quality automatically.
 
 Code should look as if a single developer wrote it, even if many people contributed.
 
-For Python, **Ruff** can do both:
+::right::
 
-```bash
-ruff check .
-ruff format .
-```
+::note
+AI-generated code should meet the same standards as human-written code
+::
+
+---
+layout: two-cols-header
+transition: none
+---
+
+# Linters and autoformatters
+
+::left::
+
+<span class="text-gray-400">We don’t need to remember every formatting convention ourselves.</span>
+
+<span class="text-gray-400">Tools such as Ruff can apply consistent formatting automatically, including conventions informed by the Python style guide [PEP 8](https://peps.python.org/pep-0008/).</span>
+
+**Linters** identify potential errors and violations of coding conventions.
+
+<span class="text-gray-400">**Autoformatters** apply consistent formatting without intentionally changing behaviour.</span>
+
+<span class="text-gray-400">Code should look as if a single developer wrote it, even if many people contributed.</span>
 
 ::right::
 
 ::note
 AI-generated code should meet the same standards as human-written code
 ::
+
+```python
+F841 Local variable `threshold` is assigned to but never used
+ --> check_temperature.py:2:5
+  |
+1 | def check_temperature(value):
+2 |     threshold = 100
+  |     ^^^^^^^^^
+3 |     if value > 100:
+4 |         print("Invalid temperature")
+  |
+```
+
+---
+layout: two-cols-header
+transition: none
+---
+
+# Linters and autoformatters
+
+::left::
+
+<span class="text-gray-400">We don’t need to remember every formatting convention ourselves.</span>
+
+<span class="text-gray-400">Tools such as Ruff can apply consistent formatting automatically, including conventions informed by the Python style guide [PEP 8](https://peps.python.org/pep-0008/).</span>
+
+<span class="text-gray-400">**Linters** identify potential errors and violations of coding conventions.</span>
+
+**Autoformatters** apply consistent formatting without intentionally changing behaviour.
+
+<span class="text-gray-400">Code should look as if a single developer wrote it, even if many people contributed.</span>
+
+::right::
+
+::note
+AI-generated code should meet the same standards as human-written code
+::
+
+```python
+def calc(a,b,c=2):
+ x=a+b+c
+ y=( a+b+c)/ 3 
+ return  { 'sum':x ,"avg":y }
+```
+
+```python
+def calc(a, b, c=2):
+    x = a + b + c
+    y = (a + b + c) / 3 
+    return {"sum": x, "avg": y}
+```
 
 ---
 layout: two-cols-header
@@ -486,25 +545,44 @@ Inspect the results.
 What did Ruff identify or change? Does this establish that the software behaves correctly?
 ::
 
-
----
-layout: two-cols-header
 ---
 
 # Practical 2 — Checkpoint
 
-::left::
+<span />
 
-We asked AI to implement a bounded change.
-
-Discuss:
-
-- Did the implementation match `DESIGN.md`?
-- Did AI change anything unrelated?
-- Can you explain how the new behaviour works?
-
-::right::
+Review the implementation AI produced.
+- Does it satisfy the intended behaviour?
+- Is the change **simple and focused**?
+- Can you explain the code?
+- Did AI introduce unnecessary complexity?
 
 ::note
-AI can produce the implementation. We remain responsible for understanding and accepting it.
+A working implementation is a starting point. Inspect the changes, question unnecessary complexity and decide whether to accept them.
+::
+
+---
+
+# Teaching AI our conventions
+
+<span />
+
+We've used **Ruff** to check and format our code.
+
+Rather than repeating these instructions in every prompt, we can record them in `AGENTS.md`:
+
+```md
+## Code quality
+
+Follow the project's coding conventions.
+
+Before completing a coding task:
+- Run `ruff check .`
+- Run `ruff format --check .`
+
+Report any failures.
+```
+
+::note
+Project instructions provide reusable context for AI agents, just as design documents capture reusable decisions
 ::
