@@ -219,6 +219,7 @@ Tests can operate at different levels:
 - **unit** — individual functions / components
 - **integration** — interactions between components
 - **end-to-end / acceptance** — important user behaviour
+
 For research software, known-answer tests, boundary cases and meaningful properties can be particularly valuable.
 
 ---
@@ -337,7 +338,7 @@ def test_sinc():
     assert math.isclose(sinc(0), 1.0)
 ```
 
-Always ensure AI agents have **tests to guide them**. The tests define the behaviour we want to preserve.
+Tests provide executable expectations that help constrain AI-generated changes.
 
 ---
 
@@ -345,61 +346,52 @@ Always ensure AI agents have **tests to guide them**. The tests define the behav
 
 <span />
 
-The Research Data Checker should classify non-finite measurements
-(`nan`, `inf`, `-inf`) as **invalid**, not out of range.
+The Research Data Checker should classify non-finite measurements (`nan`, `inf`, `-inf`) as **invalid**, not out of range.
 
-**Working manually, without AI:**
+Open `tests/test_numeric_range.py` and add:
 
-1. Open `tests/test_numeric_range.py`.
-2. Add a test for this requirement.
-3. Run:
+```python
+def test_non_finite_measurement_is_invalid():
+    rows = [{"measurement": "nan"}]
+    issues = check_numeric_range(rows, "measurement", 0.0, 100.0)
 
-   ```bash
-   pytest -q
-   ```
+    assert len(issues) == 1
+    assert issues[0].kind == "invalid"
+```
 
-4. Confirm that your new test **fails**.
+Run:
 
-::note
-The failing test expresses the behaviour we want before we change the implementation
+```bash
+pytest
+```
+
+::question
+**Why does the new test fail?**
 ::
 
 ---
 
-# From chat to a coding agent
+# Working with AI agents
 
 <span />
 
-So far, we have used AI to discuss problems and explore code.
+We've already used AI to explore and modify code.
 
-A **coding agent** can work directly with a repository:
+VS Code Chat offers different ways to work with AI:
 
-<div class="w-140 mx-auto mt-8">
+- **Ask:** Investigate problems and explain existing code.
+- **Plan:** Explore possible changes before implementation.
+- **Agent:** Modify files, execute commands and verify results.
 
-```mermaid
-flowchart LR
-    I["Inspect"] --> P["Plan"]
-    P --> A["Act"]
-    A --> O["Observe"]
-    O --> I
-
-    style I fill:#dbeafe,stroke:#2563eb,stroke-width:2px
-    style P fill:#dbeafe,stroke:#2563eb,stroke-width:2px
-    style A fill:#dcfce7,stroke:#16a34a,stroke-width:2px
-    style O fill:#fff4e5,stroke:#d97706,stroke-width:2px
-```
-
-</div>
-
-It can inspect files, modify code, run commands and tests, and use the results to decide what to do next.
+The same assistant can support all three workflows.
 
 ::note
-The important difference is agency: the AI can now act on the repository
+We can choose when to explore, when to plan and when to let AI enact
 ::
 
 ---
 
-# Plan before Build
+# Plan before implementation
 
 <span />
 
@@ -410,7 +402,7 @@ A useful workflow separates deciding **what to change** from actually changing i
 ```mermaid
 flowchart LR
     P["<b>Plan</b>"] --> R["Review plan"]
-    R --> B["<b>Build</b>"]
+    R --> B["<b>Agent</b>"]
     B --> T["Run tests"]
     T --> I["Inspect result"]
 
@@ -423,12 +415,12 @@ flowchart LR
 
 </div>
 
-**Plan mode:** investigate and propose changes without modifying files.
+**Plan mode:** Investigate and propose changes without implementing them
 
-**Build mode:** implement the approved change.
+**Agent mode:** Implement the agreed changes and run checks
 
 ::note
-Review the plan before implementation and inspect the result afterwards
+Review the plan before implementation, and inspect the changes afterwards
 ::
 
 ---
@@ -441,53 +433,29 @@ layout: two-cols-header
 
 You now have a **failing test that defines the required behaviour**.
 
-Open the CLI coding agent.
-
-In **Plan mode**, ask:
+In VS Code Chat, select **Plan** mode and ask:
 
 ::note
 Investigate why this test fails. Propose the smallest change needed to satisfy it. Do not modify any files.
 ::
 
-Review the proposed plan. Does it address the requirement without introducing unnecessary changes?
+Review the proposed plan.
+
+**Does it address the requirement without introducing unrelated changes?**
 
 ::right::
 
-Then switch to **Build mode**:
+In the same conversation, switch to **Agent** mode and ask:
 
 ::note
-Implement the approved plan. Do not modify the test or `find_duplicates`. Do not commit or push anything.
+Implement the agreed plan. Do not modify the test or `find_duplicates`.
 ::
 
-Check that the test now passes and that the existing tests still pass.
+Then:
 
-**Going further**
-
-Ask the agent whether its implementation introduces any new assumptions or edge cases. Evaluate its response.
-
----
-layout: two-cols-header
----
-
-# Characterisation tests
-
-::left::
-
-When inheriting unfamiliar software, tests can document **what it currently does** before we change it.
-
-This can make refactoring safer.
-
-AI can be particularly useful here: it can inspect existing code and generate a **test harness that captures current behaviour**, giving us a safety net for subsequent refactoring.
-
-::right::
-
-**Going further:** you can use the CLI coding agent to generate a **characterisation test** for `find_duplicates`. Inspect the tests.
-
-::bottom::
-
-::note
-Characterisation tests tell us **what the software does**, not whether that behaviour is correct.
-::
+1. Run `pytest`.
+2. Confirm the new and existing tests pass.
+3. Inspect the changes AI made.
 
 ---
 
@@ -500,9 +468,9 @@ Characterisation tests tell us **what the software does**, not whether that beha
 ```mermaid
 flowchart LR
     W["Write test"] --> F["Run → <b>FAIL</b>"]
-    F --> P["<b>Agent Plan</b>"]
+    F --> P["<b>Plan</b>"]
     P --> R["Review plan"]
-    R --> B["<b>Agent Build</b>"]
+    R --> B["<b>Agent</b>"]
     B --> T["Run tests"]
     T --> I["Inspect change"]
 
@@ -521,22 +489,26 @@ Discuss:
 - How did the failing test constrain what the agent implemented?
 - What did you still need to check or decide yourself?
 
-<!--
-Practical 4a: approximately 10–12 minutes.
-CLI Plan/Build demonstration: approximately 3 minutes.
-Practical 4b: approximately 10–12 minutes.
+---
+layout: two-cols-header
+---
 
-The important distinction is that participants establish the expected
-behaviour themselves, then use the agent to implement it.
+# Characterisation tests
 
-The test provides an executable specification, but does not independently
-establish that the underlying domain assumption is correct.
+::left::
 
-The prepared edge case is in `check_numeric_range`: non-finite values
-(nan, inf, -inf) must be invalid, not out of range. Do not reveal the
-implementation line. Do not change `find_duplicates`; its characterisation
-test is retained for the synthesis.
+When inheriting unfamiliar software, tests can document **what it currently does** before we change it.
 
-Do not introduce Git operations here. Participants will learn to inspect
-and control repository history in Module 5.
--->
+This can make refactoring safer.
+
+AI can be particularly useful here: it can inspect existing code and generate a **test harness that captures current behaviour**, giving us a safety net for subsequent refactoring.
+
+::right::
+
+**Going further**: Ask VS Code Chat to generate characterisation tests for `find_duplicates`. Inspect what behaviour the tests preserve.
+
+::bottom::
+
+::note
+Characterisation tests tell us **what the software does**, not whether that behaviour is correct.
+::

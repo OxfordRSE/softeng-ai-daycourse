@@ -25,12 +25,10 @@ We now have:
 
 ::right::
 
-But collaborators have their own copies.
-- Code distribution (multiple computers)
-- Multiple variants / out-of-sync copies
-- Can variants be merged?
-
-Bug fixes need to be coordinated across these copies
+But collaborators have their own copies
+- Changes happen independently
+- Copies can become out of sync
+- Fixes and improvements need to be shared
 
 ::bottom::
 
@@ -106,6 +104,53 @@ GitHub brings together the tools needed to coordinate software development
 ::
 
 ---
+
+# From individual work to collaboration
+
+<span />
+
+So far, we've been working independently on our own copies of the Research Data Checker
+
+Now we want to **contribute improvements to a shared project**
+
+How can we:
+
+- **Propose** a change before implementing it?
+- **Develop** the change without disrupting others?
+- **Review** each other's contributions?
+- **Decide** what should become part of the shared project?
+
+::note
+We'll use GitHub to work through this process together
+::
+
+---
+
+# Practical 6a — Publish your work
+
+<span />
+
+You've committed and merged your changes locally. Now let's publish them to GitHub.
+
+1. In your Codespace, check your current branch:
+
+   ```bash
+   git status
+   ```
+
+2. Push your changes to your fork:
+
+   ```bash
+   git push
+   ```
+
+3. Open your fork on GitHub and inspect its commit history.
+
+::question
+What changed on GitHub?
+::
+
+---
 layout: two-cols-header
 ---
 
@@ -135,62 +180,35 @@ layout: two-cols-header
 
 ---
 
-# Practical 6a — Fork the repository
+# Practical 6b — Your fork and the upstream project
 
 <span />
 
-So far, we've worked locally in Codespaces.
+You've published your changes to your own GitHub repository.
 
-Now we'll use GitHub to share and collaborate on software.
+Find the original Research Data Checker repository on GitHub.
 
-1. Open the Research Data Checker repository on GitHub.
-2. Click **Fork** and create a copy under your account.
-3. Open your fork and explore:
-   - **Code** — the files and history
-   - **Issues** — problems and proposed improvements
-   - **Pull requests** — proposed changes awaiting review
-
-::note
-Your Codespace is your development computer. Your fork is a repository you control on GitHub.
-::
-
----
-
-# An issue specifies a bounded change
-
-<span />
-
-A useful feature specification makes three things explicit:
-
-**Interface** — what should exist afterwards?
-
-**Boundary** — what should **not** change?
-
-**Acceptance** — how will we know it works?
-
-::note
-A feature request is not yet a specification
-::
-
----
-
-# Practical 6b — Specify a change
-
-<span />
-
-Choose one of the prepared documentation issues in the upstream Research Data Checker repository.
-
-Review its description and identify:
-
-- **Interface** — what should exist afterwards?
-- **Boundary** — what must not change?
-- **Acceptance** — how will we know the change is complete?
-
-Add a comment suggesting one clarification or acceptance criterion.
+- Can you see your commits in the upstream repository?
+- Can you see the changes made by other participants?
+- Who can merge changes into the upstream repository?
 
 ::question
-Could another contributor implement this without needing to guess?
+**How can we contribute our work without directly modifying the upstream repository?**
 ::
+
+---
+
+# Issues — coordinating work
+
+<span />
+
+An issue provides a shared place to discuss a proposed change.
+
+**Instructor demonstration:**
+
+- Open the prepared issue describing the feature we've implemented today
+- Identify its interface, boundary and acceptance criteria
+- Show how discussion can clarify the task before implementation
 
 ---
 
@@ -218,6 +236,26 @@ Ask: is this a change the project is prepared to own?
 
 Who will maintain it? Is the design understandable? Does it add a dependency or support burden?
 -->
+
+---
+
+# Practical 6c — Propose your changes
+
+<span />
+
+You've pushed your course changes to your fork. Now propose them to the **upstream repository**
+
+1. Open your fork on GitHub and select **Contribute → Open pull request**
+2. Check the PR direction:
+   - **Base:** upstream repository, `main`
+   - **Compare:** your fork, `main`
+3. Describe the changes you made during the course
+4. Inspect **Files changed**
+5. Submit the pull request
+
+::question
+Is this a focused, reviewable contribution?
+::
 
 ---
 
@@ -315,78 +353,20 @@ AI can help to:
 But an AI review is **additional input**, not independent approval.
 
 ---
-layout: two-cols-header
----
 
-# Practical 6c — Review a contribution
-
-::left::
-
-Open the prepared pull request using the course link.
-
-1. Read the issue it claims to resolve.
-2. Inspect the proposed changes.
-3. Check the **boundary** — did anything change outside the requested scope?
-4. Check the **acceptance** criteria.
-5. Inspect the CI result.
-
-::question
-**Would you merge this change? If not, what would you ask the contributor to change?**
-::
-
-::right::
-
-**Going further:**
-
-Ask AI to review the pull request.
-
-Did it identify the same concerns as you?
-
-::note
-Green CI is not sufficient review
-::
-
----
-
-# Practical 6d — Propose a change
+# Practical 6d — Review a colleague's PR
 
 <span />
 
-Return to the issue you specified earlier.
+Open another participant's pull request in the upstream repository.
 
-In **your fork on GitHub**:
-
-1. Open the file you want to change.
-2. Click the pencil icon to edit it.
-3. Make the small documentation improvement.
-4. Select **Commit changes**.
-5. Choose **Create a new branch for this commit**.
-6. Name the branch `documentation-update` and confirm.
-
-::note
-Your change is now recorded on a separate branch, ready to propose for review.
-::
-
----
-
-# Practical 6d — Open a pull request
-
-<span />
-
-GitHub may offer **Compare & pull request** after you commit to your new branch.
-
-1. Open a PR from your fork into the **upstream OxfordRSE repository's `main`**.
-2. Link the issue and explain your change.
-3. Inspect the diff and CI results.
-4. Find another participant's PR and review their proposed changes.
-5. Respond to any feedback on your own PR.
+1. Read the description and inspect **Files changed**.
+2. Check the CI results.
+3. Identify one thing that is clear and one thing that needs clarification.
+4. Leave a constructive review comment.
 
 ::question
-Would you accept the contribution? What would you ask the author to change?
-::
-
-::note
-A pull request proposes a contribution. Review and CI provide evidence for the maintainer's decision.
+**Would you recommend accepting the contribution? Why?**
 ::
 
 ---
@@ -423,11 +403,11 @@ Was this change appropriately scoped?
 
 Who will:
 
-- understand it?
-- review and fix bugs?
-- update its dependencies?
-- support its users?
-- change it when requirements evolve?
+- Understand it?
+- Review and fix bugs?
+- Update its dependencies?
+- Support its users?
+- Change it when requirements evolve?
 
 ::note
 AI can make code cheap to produce without making it cheap to own.
@@ -467,17 +447,39 @@ The contributor and maintainer may therefore see the same PR very differently.
 
 ---
 
-# Practical 6 — Optional: delegate to an agent
+# Delegate to an agent
 
 <span />
 
-An online coding agent can propose an implementation for an issue.
+A well-specified **issue** can provide an AI agent with a bounded implementation task:
 
-**Demonstration:** assign a small issue to the agent and inspect its pull request against the specification.
+- **Interface** — what should change?
+- **Boundary** — what must remain unchanged?
+- **Acceptance** — how will we know it worked?
+
+The agent can implement the change and propose a **pull request**
+
+**CI** provides automated evidence, but **human review** determines whether to accept it
 
 ::note
-Delegation is an option, not a requirement. Human review remains essential.
+A well-specified problem can enable AI to undertake the development cycle, producing a tested pull request for human review
 ::
+
+<!--
+Before the course, assign the same prepared issue to a coding agent
+and retain its resulting pull request.
+
+Participants have now experienced the full development workflow
+themselves. Show how the agent can undertake that workflow from
+the same issue.
+
+Compare its implementation and CI results with participant PRs.
+
+Ask: Would we accept this contribution? What evidence supports
+that decision?
+
+The agent's PR is another proposal for review, not a model answer.
+-->
 
 ---
 layout: two-cols-header
@@ -504,20 +506,20 @@ flowchart TD
 
 ::right::
 
-We have now:
+We've seen how to:
 
-- specified a change;
-- inspected a proposed implementation;
-- considered tests and CI;
-- reviewed the contribution;
-- decided whether to accept it.
+- Define a change through an issue
+- Propose an implementation through a PR
+- Run automated checks with CI
+- Review the proposed changes
+- Decide whether to accept the contribution
 
 ::note
 A pull request is a proposal. Acceptance remains a human decision.
 ::
 
 ::question
-What evidence justified your decision?
+What evidence would justify accepting a contribution?
 ::
 
 ---
@@ -528,12 +530,12 @@ What evidence justified your decision?
 
 Before submitting an issue or pull request:
 
-- Search for existing discussions.
-- Read the contribution guidelines.
-- Explain what you observed and what you expected.
-- Provide enough context to reproduce a problem.
-- Keep proposed changes focused and reviewable.
-- Respect the time of maintainers and reviewers.
+- Search for existing discussions
+- Read the contribution guidelines
+- Explain what you observed and what you expected
+- Provide enough context to reproduce a problem
+- Keep proposed changes focused and reviewable
+- Respect the time of maintainers and reviewers
 
 ::note
 AI makes contributions easier to produce. It does not make them free to review

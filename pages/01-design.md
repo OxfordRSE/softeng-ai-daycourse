@@ -170,10 +170,9 @@ Record the decisions that matter:
 - Purpose / users
 - Requirements
 - Constraints and domain decisions
-- Architecture and interfaces
 - Open questions
 
-A design document build a reusable body of knowledge for **future human** and **AI** conversations
+A design document preserves decisions as reusable context for humans and AI
 
 When a new conversation or coding-agent task begins, provide the document rather than reconstructing the project from memory or from the code.
 
@@ -183,46 +182,75 @@ For substantial work, a short dated decision log can also preserve what was trie
 
 ---
 
-# Practical 1 — Explore requirements with AI
+# Codespaces
 
-<span />
+::center
 
-A research group receives CSV files containing measurements.
+<a href="https://github.com/features/codespaces" target="_blank" rel="noopener noreferrer"><img src="../img/codespaces.png" alt="GitHub Codespaces" class="border border-gray-300" style="width: 70%;" /></a>
 
-They want to identify potential problems **before analysis**, without changing the original data.
+[github.com/codespaces](https://www.github.com/codespaces) gives everyone a common, pre-configured development environment.
 
-In AI chat:
+For today, think of the Codespace as the machine on which you are developing.
 
-1. Provide this context
-2. Ask AI what it needs to know before implementation
-3. Discuss two or three of its questions
-4. Identify an assumption that needs a decision
-
-::question
-What did AI need to know that wasn't in the original request?
 ::
 
 ---
 
-# Practical 1 — Produce reusable context
+# Practical 1 — Open your development environment
 
 <span />
 
-For today's shared implementation, we'll focus on:
+We'll use **GitHub Codespaces** as our development computer throughout the day.
 
-> Making the minimum and maximum measurement limits configurable
+1. Open the course **Research Data Checker** repository on GitHub.
 
-Create or update `DESIGN.md` with:
+<div style="height: 15px;" />
 
-- **Purpose:** What is the checker for?
-- **Behaviour:** What should configurable limits allow?
-- **Constraints:** What must remain unchanged?
-- **Open questions:** What still needs clarification?
+::center
+[https://github.com/OxfordRSE/softeng-ai-daycourse-data-checker](https://github.com/OxfordRSE/softeng-ai-daycourse-data-checker)
+::
 
-Keep it short — a few sentences or bullet points are enough.
+<div style="height: 20px;" />
+
+2. Click **Fork → Create a new fork**.
+3. In your fork, select **Code → Codespaces → Create codespace on main**
+3. Wait for VS Code to open in your browser
 
 ::note
-We'll reuse this document when asking AI to implement the feature
+Everyone has the same development environment, ready to use throughout the course
+::
+
+---
+
+# Practical 1 — Research Data Checker brief
+
+<span />
+
+A research group receives CSV files containing a single numeric column named `measurement`.
+
+Before analysis, they want to identify potentially problematic values without changing the original data.
+
+The checker currently uses minimum and maximum limits of 0 and 100. They want to be able to supply different limits when running the checker.
+
+---
+
+# Practical 1 — Explore requirements with AI
+
+<span />
+
+1. Open `instructor/practical-1-brief.md` in VS Code
+2. Open **Chat**, click **+** to include the file as context
+3. Ask AI:
+
+    > Before writing code, identify decisions needed for configurable minimum and maximum limits.
+    Suggest simple options for each.
+
+4. Discuss with AI. You can make your own decisions or ask AI to suggest options. You can also ask it to challenge your assumptions
+
+5. Ask AI to summarise your decisions
+
+::question
+Which decisions required your judgement rather than AI's?
 ::
 
 ---
@@ -231,12 +259,18 @@ We'll reuse this document when asking AI to implement the feature
 
 <span />
 
-What did AI ask that wasn't covered by the original brief?
+We've explored the requirements and considered different approaches.
 
-What decisions did you need to make yourself?
+Open the prepared `DESIGN.md` file in your Codespace.
+
+Compare it with your discussion:
+
+- Which decisions did you reach independently?
+- Which requirements had you overlooked?
+- Are there any assumptions you would challenge?
 
 ::note
-Your `DESIGN.md` now captures those decisions so they can be reused in the next practical
+A design document preserves agreed decisions as reusable context for future human and AI work
 ::
 
 ---

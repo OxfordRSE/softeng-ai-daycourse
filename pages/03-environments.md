@@ -536,3 +536,24 @@ Project instructions such as `AGENTS.md` can help communicate these expectations
 ::note
 An agent should not silently change the environment to make a problem disappear
 ::
+
+---
+
+# Practical 3 — Project instructions for AI
+
+<span />
+
+1. Open `AGENTS.md` in your Codespace.
+2. Read the existing instructions. What are we asking the agent to do — or not do?
+3. Add instructions for using **Ruff**:
+
+   ```md
+   Before completing a coding task:
+   - Run `ruff check .`
+   - Run `ruff format --check .`
+   - Report any failures.
+   ```
+
+::question
+How do these instructions differ from the requirements in `DESIGN.md`?
+::
