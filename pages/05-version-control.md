@@ -236,8 +236,6 @@ gitGraph
     commit id: "refine"
     checkout main
     commit id: "other work"
-    merge feature
-    commit id: "continue"
 ```
 
 ::
@@ -245,6 +243,55 @@ gitGraph
 A branch gives a change its own history without immediately changing the shared line of development.
 
 For substantial agentic experiments, a branch can provide room to experiment.
+
+```bash
+git switch feature
+```
+
+---
+
+# Merging branches
+
+::center
+
+```mermaid
+gitGraph
+    commit id: "initial"
+    commit id: "validation"
+    branch feature
+    checkout feature
+    commit id: "add check"
+    commit id: "add tests"
+    commit id: "refine"
+    checkout main
+    commit id: "other work"
+    merge feature
+```
+
+::
+
+A branch lets us develop changes separately.
+
+**Merging** incorporates committed changes from one branch into another.
+
+```bash
+git switch main
+git merge feature
+```
+
+::note
+Branches separate work. Merging brings them together.
+::
+
+<!--
+Demonstrate a merge using VS Code's Git graph.
+
+If main hasn't changed since the branch was created,
+Git can simply move main forward (a fast-forward merge).
+
+More complicated merges may require resolving conflicts.
+We'll leave that for further exploration.
+-->
 
 ---
 
@@ -260,7 +307,7 @@ A coding agent can:
 - Create or switch branches
 - Restore earlier versions
 
-For today's work, we give it a clear boundary:
+We can give our agents clear boundaries through `AGENTS.md`, e.g.:
 
 ```text
 Modify the working tree.
@@ -304,8 +351,6 @@ layout: two-cols-header
    git diff --staged
    ```
 
-   **Check that no temporary or generated files have been staged.**
-
 ::
 
 ::right::
@@ -335,6 +380,10 @@ Explore the repository's history using the terminal or VS Code's Source Control 
 
 ::
 
+<!--
+Walk through these commands and show VSCode interface equivalents.
+-->
+
 ---
 
 # Practical 5 — Recover a change
@@ -346,11 +395,36 @@ After committing your work:
 1. Make an unwanted edit to an existing tracked file
 2. Inspect it using `git diff`
 3. Discard the edit using `git restore <file>`
-4. Confirm the file matches the committed version
+4. Confirm the edit has been undone
 
 ::note
 Git lets us experiment without permanently losing a known-good version
 ::
+
+---
+
+# Practical 5 — Merge your work
+
+<span />
+
+You've recorded your changes on `my-changes`.
+
+Now incorporate them into `main`:
+
+```bash
+git status
+git switch main
+git merge my-changes
+git log --oneline --graph --all
+```
+
+Check that your changes are now present on `main`.
+
+::question
+**What happened to the branch history when you merged?**
+::
+
+**Going further:** Create another branch, make a small change, commit it. Now return to main, make a small change and commit it. Merge your branch into `main` and examine the history using VS Code's Git graph. Why does the graph look different from the previous merge?
 
 ---
 
@@ -364,11 +438,15 @@ Can you explain the difference between:
 - **Staging area** — changes selected for the next commit
 - **Repository history** — changes recorded in commits
 - **Branches** — alternative lines of development
+- **Merging** — incorporating changes from one branch into another
 
 ::note
 Git helps us understand, record and recover changes
 ::
 
-::question
-Where are your changes now and how would you recover an unwanted edit?
-::
+<CourseLink
+  title="Version Control with Git"
+  description="Learn how to use Git for version control, including branching, merging, and collaborating on code."
+  url="https://www.rse.ox.ac.uk/training"
+  v-click
+/>

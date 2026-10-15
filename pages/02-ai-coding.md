@@ -371,7 +371,6 @@ F841 Local variable `threshold` is assigned to but never used
 
 ---
 layout: two-cols-header
-transition: none
 ---
 
 # Linters and autoformatters
@@ -466,20 +465,6 @@ Delegate implementation work, not responsibility for the result
 
 ---
 
-# Codespaces
-
-::center
-
-<a href="https://github.com/features/codespaces" target="_blank" rel="noopener noreferrer"><img src="../img/codespaces.png" alt="GitHub Codespaces" class="border border-gray-300" style="width: 70%;" /></a>
-
-[github.com/codespaces](https://www.github.com/codespaces) gives everyone a common, pre-configured development environment.
-
-For today, think of the Codespace as the machine on which you are developing.
-
-::
-
----
-
 # Practical 2a — Explore the codebase
 
 <span />
@@ -544,6 +529,11 @@ Inspect the results.
 ::question
 What did Ruff identify or change? Does this establish that the software behaves correctly?
 ::
+
+<!--
+Ruff check produces an import error, in this case an outdated import convention.
+Ruff format changes cli.py line 29 measurements.
+-->
 
 ---
 
