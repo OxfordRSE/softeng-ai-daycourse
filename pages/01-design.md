@@ -69,6 +69,8 @@ This leaves important questions unanswered:
 
 ::right::
 
+::v-click
+
 **A more useful specification**
 
 The checker should:
@@ -77,13 +79,27 @@ The checker should:
 - Report problems without modifying the input data
 - Preserve existing behaviour when no limits are supplied
 
+::
+
 ::bottom::
 
 ::v-click
 ::note
-AI can help us identify the questions. We must decide which answers are appropriate.
+AI is quick to offer solutions. Use conversation to explore the problem first: question its assumptions, consider alternatives and clarify what you actually need.
 ::
 ::
+
+<!--
+Ask for one or two suggested prompts before revealing the specification.
+
+Contrast asking AI to implement the request immediately with asking
+it to identify ambiguities, assumptions and missing requirements.
+
+We are not looking for a perfect prompt. The point is to use AI
+conversationally to clarify the problem before implementation.
+
+Keep this to approximately one minute.
+-->
 
 ---
 layout: two-cols-header
@@ -130,6 +146,18 @@ Ask AI to:
 ::note
 Use AI to clarify the problem before asking it to implement the solution
 ::
+
+<!--
+Avoid anchoring the conversation too early on your preferred solution.
+
+If you already have an idea, consider first asking AI to explore
+alternatives without mentioning it.
+
+You can then introduce your idea and ask AI to compare the options.
+
+This helps avoid turning the conversation into an exercise in
+confirming your initial assumptions.
+-->
 
 ---
 

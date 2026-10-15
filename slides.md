@@ -98,3 +98,7 @@ src: ./pages/toc.md
 ---
 src: ./pages/07-wrapup.md
 ---
+
+---
+src: ./pages/closing.md
+---
