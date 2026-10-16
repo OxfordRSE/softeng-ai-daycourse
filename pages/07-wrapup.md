@@ -42,7 +42,7 @@ Where could we have challenged the assumption that repeated IDs are errors?
 ::
 
 <!--
-Run `python -m research_check.cli examples/longitudinal.csv`
+Run `python -m research_check examples/longitudinal.csv`
 to reproduce the longitudinal-data example.
 -->
 

@@ -468,12 +468,10 @@ Installing a package is not enough — it must be installed in the environment r
 
 <span />
 
-The Research Data Checker works with NumPy 1.x.
-
 **Environment A — existing environment**
 
 ```bash
-python -m research_check.cli examples/observations.csv
+python -m research_check examples/observations.csv
 ```
 
 **Environment B — NumPy 2.x**
@@ -482,10 +480,13 @@ python -m research_check.cli examples/observations.csv
 python -m venv .venv2
 source .venv2/bin/activate
 python -m pip install "numpy>=2"
-python -m research_check.cli examples/observations.csv
+python -m research_check examples/observations.csv
 ```
 
-Compare the results and record your observations in `ENVIRONMENT.md`.
+You should receive the following error:
+```text
+AttributeError: `np.float_` was removed in the NumPy 2.0 release.
+```
 
 ::question
 **Why does the same source code behave differently?**

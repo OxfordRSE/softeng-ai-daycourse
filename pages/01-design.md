@@ -261,7 +261,7 @@ Which decisions required your judgement rather than AI's?
 
 We've explored the requirements and considered different approaches.
 
-Open the prepared `DESIGN.md` file in your Codespace.
+Open `DESIGN.md` file in the repository root.
 
 Compare it with your discussion:
 
