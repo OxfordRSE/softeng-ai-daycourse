@@ -16,6 +16,10 @@ fonts:
 ---
 
 ---
+src: ./pages/qr-slides.md
+---
+
+---
 src: ./pages/toc.md
 ---
 

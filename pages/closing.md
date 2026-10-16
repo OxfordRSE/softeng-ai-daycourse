@@ -32,3 +32,19 @@ Selected courses:
 - Dashboards / website
 - Mobile app development
 - Drop-in sessions for advice and support
+
+---
+layout: section
+---
+
+# Feedback
+
+::center
+
+Please [provide feedback](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=G96VzPWXk0-0uv5ouFLPkRBMw11Z1aRLpZImQ307i6BUN0xEUE1IMzYyWE9OVUYwWVBFTTg4Q0xMMS4u) on the course
+
+<a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=G96VzPWXk0-0uv5ouFLPkRBMw11Z1aRLpZImQ307i6BUN0xEUE1IMzYyWE9OVUYwWVBFTTg4Q0xMMS4u">
+<img src="../img/qr-feedback.svg" alt="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=G96VzPWXk0-0uv5ouFLPkRBMw11Z1aRLpZImQ307i6BUN0xEUE1IMzYyWE9OVUYwWVBFTTg4Q0xMMS4u" width="300" />
+</a>
+
+::
