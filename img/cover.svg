@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1234" height="696"
+     viewBox="0 0 1234 696">
+
+  <title>Software Engineering in the AI Era</title>
+  <desc>Oxford Research Software Engineering course title slide</desc>
+
+  <!-- Background -->
+  <rect width="1234" height="696" fill="#041F41"/>
+
+  <!-- Course title -->
+  <text x="36" y="301"
+        font-family="Arial,Helvetica,sans-serif"
+        font-size="61"
+        font-weight="400"
+        fill="#FFFFFF">
+    Software Engineering in the AI era
+  </text>
+
+  <!-- Organisation -->
+  <text x="39" y="340"
+        font-family="Arial,Helvetica,sans-serif"
+        font-size="25"
+        font-weight="400"
+        fill="#8C9EB3">
+    Oxford Research Software Engineering Group
+  </text>
+
+  <!-- Contact -->
+  <text x="39" y="408"
+        font-family="Arial,Helvetica,sans-serif"
+        font-size="21"
+        fill="#C3CEDC">
+    rse-training@dtc.ox.ac.uk
+  </text>
+
+</svg>
