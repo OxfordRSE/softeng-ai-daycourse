@@ -491,9 +491,10 @@ Did AI accurately explain how the existing code works?
 
 Ask **VS Code Chat** to implement the feature described in `DESIGN.md`:
 
-> Allow users to specify minimum and maximum measurement limits through command-line options.
-
+```text
+Allow users to specify minimum and maximum measurement limits through command-line options.
 Keep the existing defaults when no options are supplied.
+```
 
 Then run:
 
@@ -559,7 +560,7 @@ A working implementation is a starting point. Inspect the changes, question unne
 
 We've used **Ruff** to check and format our code.
 
-Rather than repeating these instructions in every prompt, we can record them in `AGENTS.md`:
+Rather than repeating these instructions in every prompt, we can record **project-wide instructions** in `AGENTS.md`:
 
 ```md
 ## Code quality
@@ -574,5 +575,6 @@ Report any failures.
 ```
 
 ::note
-Project instructions provide reusable context for AI agents, just as design documents capture reusable decisions
+- `DESIGN.md` describes what we're building
+- `AGENTS.md` describes how we expect AI to work
 ::

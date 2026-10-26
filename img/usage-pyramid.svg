@@ -55,12 +55,12 @@
           stroke="#000" stroke-width="6"
           stroke-dasharray="28 16"/>
 
-    <text x="205" y="456">Lab</text>
+    <text x="160" y="456">Lab</text>
     <line x1="270" y1="443" x2="575" y2="443"
           stroke="#000" stroke-width="6"
           stroke-dasharray="28 16"/>
 
-    <text x="213" y="650">You</text>
+    <text x="160" y="650">You</text>
     <line x1="270" y1="637" x2="575" y2="637"
           stroke="#000" stroke-width="6"
           stroke-dasharray="28 16"/>

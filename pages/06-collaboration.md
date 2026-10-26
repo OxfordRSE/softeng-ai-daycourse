@@ -5,7 +5,7 @@ routeAlias: collaborative-coding
 
 # 6. Collaborative software development
 
-## GitHub, review and continuous integration
+## From individual changes to shared software
 
 ---
 layout: two-cols-header
@@ -25,7 +25,7 @@ We now have:
 
 ::right::
 
-But collaborators have their own copies
+But **collaborators** have their own copies
 - Changes happen independently
 - Copies can become out of sync
 - Fixes and improvements need to be shared
@@ -125,32 +125,6 @@ We'll use GitHub to work through this process together
 ::
 
 ---
-
-# Practical 6a — Publish your work
-
-<span />
-
-You've committed and merged your changes locally. Now let's publish them to GitHub.
-
-1. In your Codespace, check your current branch:
-
-   ```bash
-   git status
-   ```
-
-2. Push your changes to your fork:
-
-   ```bash
-   git push
-   ```
-
-3. Open your fork on GitHub and inspect its commit history.
-
-::question
-What changed on GitHub?
-::
-
----
 layout: two-cols-header
 ---
 
@@ -180,13 +154,39 @@ layout: two-cols-header
 
 ---
 
+# Practical 6a — Publish your work
+
+<span />
+
+You've committed and merged your changes locally. Now let's publish them to GitHub.
+
+1. In your Codespace, check your current branch:
+
+   ```bash
+   git status
+   ```
+
+2. Push your changes to your fork:
+
+   ```bash
+   git push
+   ```
+
+3. Open your fork on GitHub and inspect its commit history.
+
+::question
+What changed on GitHub?
+::
+
+---
+
 # Practical 6b — Your fork and the upstream project
 
 <span />
 
 You've published your changes to your own GitHub repository.
 
-Find the original Research Data Checker repository on GitHub.
+Open the original [Research Data Checker](https://github.com/OxfordRSE/softeng-ai-daycourse-data-checker) repository on GitHub.
 
 - Can you see your commits in the upstream repository?
 - Can you see the changes made by other participants?

@@ -5,7 +5,7 @@ routeAlias: version-control
 
 # 5. Version control
 
-## Git, history and recoverable change
+## Recording, recovering and combining changes
 
 ---
 
@@ -52,7 +52,7 @@ The names are trying to answer questions that version control is designed to ans
 <div class="w-120 mx-auto">
 
 ```mermaid
-flowchart TB
+flowchart BT
     P["<b>Paper / figure</b>"]
     R["Result"]
     A["Analysis"]
@@ -60,11 +60,11 @@ flowchart TB
     D["Data"]
     E["Environment"]
 
-    P --> R
-    R --> A
-    A --> S
-    A --> D
-    A --> E
+    R --> P
+    A --> R
+    S --> A
+    D --> A
+    E --> A
 
     style P fill:#dbeafe,stroke:#2563eb,stroke-width:2px
     style R fill:#e0f2fe,stroke:#0284c7,stroke-width:2px
@@ -143,10 +143,10 @@ layout: two-cols-header
   </div>
 
   <FancyArrow
-    x1="100"
-    y1="240"
-    x2="154"
-    y2="275"
+    x1="154"
+    y1="160"
+    x2="100"
+    y2="205"
     arc="-0.4"
     head-size="15"
   />
@@ -156,19 +156,19 @@ layout: two-cols-header
   </div>
   
   <FancyArrow
-    x1="154"
-    y1="170"
-    x2="100"
-    y2="210"
+    x1="100"
+    y1="235"
+    x2="154"
+    y2="270"
     arc="-0.4"
     head-size="15"
   />
   
   <FancyArrow
     x1="360"
-    y1="275"
+    y1="267"
     x2="410"
-    y2="310"
+    y2="302"
     arc="0.4"
     head-size="15"
   />
@@ -245,7 +245,7 @@ A branch gives a change its own history without immediately changing the shared 
 For substantial agentic experiments, a branch can provide room to experiment.
 
 ```bash
-git switch feature
+git switch -c feature
 ```
 
 ---
@@ -333,8 +333,8 @@ layout: two-cols-header
 
    ```bash
    git status
-   git diff
-   git log --oneline
+   git diff  # unstaged changes
+   git log --oneline --graph --all
    ```
 
 2. Create a branch for your work:
@@ -348,7 +348,8 @@ layout: two-cols-header
    ```bash
    git add .
    git status
-   git diff --staged
+   git diff  # unstaged changes
+   git diff --staged  # staged changes
    ```
 
 ::
@@ -363,20 +364,24 @@ layout: two-cols-header
    git commit -m "Complete course practical changes"
    ```
 
-5. Inspect the resulting history:
+5. Inspect the branch and commit in the history:
 
    ```bash
    git log --oneline --graph --all
    ```
 
-**Going further**
+6. Merge into main
 
-Explore the repository's history using the terminal or VS Code's Source Control view.
+    ```bash
+    git switch main
+    git merge my-changes
+    ```
 
-- Inspect the available branches (`git branch -a`).
-- Switch between `recovery/p2` and `recovery/p4`.
-- Compare the files and commit history.
-- Return to `my-changes`.
+7. Inspect the merge in the history:
+
+   ```bash
+   git log --oneline --graph --all
+   ```
 
 ::
 
@@ -385,10 +390,14 @@ Walk through these commands and show VSCode interface equivalents.
 -->
 
 ---
+layout: two-cols-header
+---
 
-# Practical 5 — Recover a change
+# Practical 5 — Going further
 
-<span />
+::left::
+
+**Undoing changes**
 
 After committing your work:
 
@@ -401,30 +410,17 @@ After committing your work:
 Git lets us experiment without permanently losing a known-good version
 ::
 
----
+::right::
 
-# Practical 5 — Merge your work
+**Navigation**
 
-<span />
+Explore the repository's history using the terminal or VS Code's Source Control view.
 
-You've recorded your changes on `my-changes`.
-
-Now incorporate them into `main`:
-
-```bash
-git status
-git switch main
-git merge my-changes
-git log --oneline --graph --all
-```
-
-Check that your changes are now present on `main`.
-
-::question
-**What happened to the branch history when you merged?**
-::
-
-**Going further:** Create another branch, make a small change, commit it. Now return to main, make a small change and commit it. Merge your branch into `main` and examine the history using VS Code's Git graph. Why does the graph look different from the previous merge?
+- Inspect the available branches (`git branch -a`).
+- Switch between branches (`git switch <branch>`).
+- Compare the files and commit history.
+- Create new branches and commits.
+- Return to `main` when done.
 
 ---
 

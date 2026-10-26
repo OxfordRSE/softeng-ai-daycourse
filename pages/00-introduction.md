@@ -482,7 +482,7 @@ Good engineering leaves a trail that lets us answer those questions
 - Stay in control
 
 ::note
-Use AI to help encode domain knowledge. Be cautious about allowing it to hallucinte / invent domain knowledge.
+Use AI to help encode domain knowledge. Be cautious about allowing it to hallucinate / invent domain knowledge.
 ::
 
 <!--

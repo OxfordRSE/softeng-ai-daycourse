@@ -226,7 +226,7 @@ Everyone has the same development environment, ready to use throughout the cours
 
 <span />
 
-A research group receives CSV files containing a single numeric column named `measurement`.
+A research group receives CSV files containing a numeric column named `measurement`.
 
 Before analysis, they want to identify potentially problematic values without changing the original data.
 
@@ -242,8 +242,9 @@ The checker currently uses minimum and maximum limits of 0 and 100. They want to
 2. Open **Chat**, click **+** to include the file as context
 3. Ask AI:
 
-    > Before writing code, identify decisions needed for configurable minimum and maximum limits.
-    Suggest simple options for each.
+```text
+Before writing code, identify decisions needed for configurable minimum and maximum limits. Suggest simple options for each.
+```
 
 4. Discuss with AI. You can make your own decisions or ask AI to suggest options. You can also ask it to challenge your assumptions
 
