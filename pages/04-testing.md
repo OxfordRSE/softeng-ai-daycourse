@@ -5,7 +5,7 @@ routeAlias: testing
 
 # 4. Software testing
 
-## Tests, regression and quality assurance
+## Defining and verifying expected behaviour
 
 ---
 layout: two-cols-header
@@ -40,6 +40,7 @@ Research software is especially exposed to silent errors because there may be no
 
 - Even if your code works initially, how do you know it will continue to work as you change it?
 - How do you identify bugs that introduce silent errors?
+- How can we steer AI to make changes that preserve the behaviour we want?
 
 ::
 
@@ -51,18 +52,28 @@ layout: two-cols-header
 
 ::left::
 
-Automated tests help us to:
+**Manual testing** helps us to:
 
-- check important behaviour
-- find defects earlier
-- prevent regressions
-- support quality assurance
-- gain confidence to change software
+* Explore how software behaves
+* Check that features work as intended
+* Discover unexpected problems
+* Assess usability and user experience
+* Apply human judgement
 
-The useful question is:
+::right::
+
+**Automated testing** helps us to:
+
+* Codify manual tests into the codebase
+* Preserve intended behaviour as code changes
+* Detect unintended changes (regressions)
+* Check behaviour consistently and repeatedly
+* Steer AI-assisted development towards correct behaviour
+
+::bottom::
 
 ::note
-What behaviour do we want to preserve?
+How do we know our software works as intended?
 ::
 
 ---

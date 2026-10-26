@@ -5,7 +5,7 @@ routeAlias: environments
 
 # 3. Environments & dependency management
 
-## Versions, isolation and reproducibility
+## Managing dependencies and reproducibility
 
 ---
 
@@ -472,6 +472,7 @@ Installing a package is not enough — it must be installed in the environment r
 
 ```bash
 python -m research_check examples/observations.csv
+python -c "import numpy; print(numpy.__version__)"
 ```
 
 **Environment B — NumPy 2.x**
@@ -480,6 +481,7 @@ python -m research_check examples/observations.csv
 python -m venv .venv2
 source .venv2/bin/activate
 python -m pip install "numpy>=2"
+python -c "import numpy; print(numpy.__version__)"
 python -m research_check examples/observations.csv
 ```
 
@@ -488,9 +490,7 @@ You should receive the following error:
 AttributeError: `np.float_` was removed in the NumPy 2.0 release.
 ```
 
-::question
-**Why does the same source code behave differently?**
-::
+Finally, deactivate environment B: `deactivate`
 
 ---
 
@@ -536,25 +536,4 @@ Project instructions such as `AGENTS.md` can help communicate these expectations
 
 ::note
 An agent should not silently change the environment to make a problem disappear
-::
-
----
-
-# Practical 3 — Project instructions for AI
-
-<span />
-
-1. Open `AGENTS.md` in your Codespace.
-2. Read the existing instructions. What are we asking the agent to do — or not do?
-3. Add instructions for using **Ruff**:
-
-   ```md
-   Before completing a coding task:
-   - Run `ruff check .`
-   - Run `ruff format --check .`
-   - Report any failures.
-   ```
-
-::question
-How do these instructions differ from the requirements in `DESIGN.md`?
 ::

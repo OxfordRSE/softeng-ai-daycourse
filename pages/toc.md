@@ -18,39 +18,39 @@ table th {
     <tr>
       <th><b>Time</b></th>
       <th><b>Session</b></th>
-      <th><b>Core practice</b></th>
+      <th><b>Description</b></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>09:30</td>
       <td><Link to="introduction" title="Introduction" /></td>
-      <td>Why engineer research software?</td>
+      <td>Research software, engineering effort and AI agency</td>
     </tr>
     <tr>
-      <td>09:55</td>
+      <td>09:50</td>
       <td><Link to="design" title="1. Software design" /></td>
-      <td>Requirements, specification, design documentation</td>
+      <td>Requirements, specifications and design decisions</td>
     </tr>
     <tr>
-      <td>10:25</td>
+      <td>10:20</td>
       <td><Link to="coding" title="2. Coding with AI" /></td>
-      <td>Development environment, clean code, configurable limits</td>
+      <td>Implementation, code quality and automated formatting</td>
     </tr>
     <tr>
-      <td>11:00</td>
+      <td>11:05</td>
       <td><strong>Break</strong></td>
       <td></td>
     </tr>
     <tr>
-      <td>11:15</td>
-      <td><Link to="environments" title="3. Versions and environments" /></td>
-      <td>Environments, versions, reproducibility, supply-chain trust</td>
+      <td>11:20</td>
+      <td><Link to="environments" title="3. Environments" /></td>
+      <td>Dependencies, version constraints and reproducibility</td>
     </tr>
     <tr>
-      <td>11:45</td>
+      <td>11:50</td>
       <td><Link to="testing" title="4. Software testing" /></td>
-      <td>Tests, TDD, edge cases, CLI Plan/Build</td>
+      <td>Automated tests, test-driven development and verification</td>
     </tr>
     <tr>
       <td>13:00</td>
@@ -60,7 +60,7 @@ table th {
     <tr>
       <td>14:00</td>
       <td><Link to="version-control" title="5. Version control" /></td>
-      <td>Git, diffs, commits, branches, push, recovery</td>
+      <td>Tracking changes, branching, committing and merging</td>
     </tr>
     <tr>
       <td>14:50</td>
@@ -70,12 +70,12 @@ table th {
     <tr>
       <td>15:05</td>
       <td><Link to="collaborative-coding" title="6. Collaborative software development" /></td>
-      <td>Forks, issues, PRs, review, CI</td>
+      <td>GitHub, pull requests, continuous integration and code review</td>
     </tr>
     <tr>
       <td>16:15</td>
       <td><Link to="wrapup" title="Wrap-up" /></td>
-      <td>Confidence, evidence, proportionality</td>
+      <td>Scientific assumptions and proportionate engineering</td>
     </tr>
     <tr>
       <td>16:30</td>
@@ -88,5 +88,5 @@ table th {
 <!--
 The aim of today is to give you practical experience of core engineering principles so that you can apply them to your own research software.
 
-And of course we will be introducing how AI can assist with these practices at each stage of the process.
+We’ll explore how AI can support these practices, and how engineering helps us understand and evaluate the software AI produces.
 -->

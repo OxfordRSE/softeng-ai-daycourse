@@ -5,7 +5,7 @@ routeAlias: wrapup
 
 # Wrap-up
 
-## Confidence, evidence and proportionality
+## Engineering judgement in the AI era
 
 ---
 layout: two-cols-header
@@ -37,8 +37,18 @@ The specification was wrong for this use case.
 
 ::v-click
 ::question
-Where could we have challenged the assumption that repeated IDs are errors?
+What should we do next?
 ::
+::
+
+::v-click
+Raise a GitHub Issue!
+
+* **Document** the unexpected behaviour
+* Provide a reproducible example
+* Discuss what the correct behaviour should be
+* Agree on changes to the specification and tests
+* Implement the fix, potentially with AI assistance
 ::
 
 <!--
@@ -62,4 +72,26 @@ to reproduce the longitudinal-data example.
 
 ::note
 The appropriate level of engineering depends on who relies on the software, what relies on its outputs, and the consequences of failure
+::
+
+---
+
+# Clean up: Delete your Codespace
+
+<br />
+
+::center
+[github.com/codespaces](https://github.com/codespaces)
+::
+
+<br />
+
+1. Find your Codespace in the list.
+2. Click the **⋯** menu next to it.
+3. Select **Delete** and confirm.
+
+<br />
+
+::note
+Deleting your Codespace frees up storage and avoids unnecessary resource usage. Make sure you've committed and pushed any changes you want to keep!
 ::
