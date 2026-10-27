@@ -24,7 +24,7 @@ The course covers software design, coding, environments, testing, version contro
 To demonstrate AI coding assistants without modifying the upstream repository:
 - [ ] Fork the [Research Data Checker](https://github.com/OxfordRSE/softeng-ai-daycourse-data-checker) repository
 - [ ] Enable **Issues** (Settings tab) and **GitHub Actions** (Actions tab) in your fork
-- [ ] Create a copy of the prepared [upstream issue](https://github.com/jsbrittain/softeng-ai-daycourse-data-checker/issues/1) in your fork (manually)
+- [ ] Create a copy of the prepared [upstream issue](https://github.com/OxfordRSE/softeng-ai-daycourse-data-checker/issues/1) in your fork (manually)
 - [ ] Assign the issue to an AI coding assistant in your fork
 
 General checks
