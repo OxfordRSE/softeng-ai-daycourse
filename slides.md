@@ -40,6 +40,10 @@ src: ./pages/oxrse-training.md
 ---
 
 ---
+src: ./pages/project-selection.md
+---
+
+---
 src: ./pages/01-design.md
 ---
 
