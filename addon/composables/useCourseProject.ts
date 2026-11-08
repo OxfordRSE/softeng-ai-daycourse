@@ -15,12 +15,12 @@ export const PROJECTS: CourseProject[] = [
     name: 'SIR Epidemic Simulator',
     summary: 'Epidemic modelling with a deterministic discrete-time SIR simulator.',
   },
-  {
+  /*{
     id: 'reaction-time',
     name: 'Reaction Time Lab',
     summary: 'Experimental Psychology variant. Practical materials are not available yet.',
     placeholder: true,
-  },
+  },*/
 ]
 
 export const DEFAULT_PROJECT: CourseProjectId = 'sir'
