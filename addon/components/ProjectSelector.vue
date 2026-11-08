@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useNav } from '@slidev/client'
-import { activeProject, PROJECTS, setProject } from '../composables/useCourseProject'
+import { activeProject, hasProjectChoice, PROJECTS, setProject } from '../composables/useCourseProject'
 
 // Include this component only on slides with project-aware content.
 // The selected project itself is shared globally and persists across slides.
@@ -13,7 +13,7 @@ function onChange(event: Event) {
 </script>
 
 <template>
-  <label v-if="!isPrintMode" class="project-selector">
+  <label v-if="!isPrintMode && hasProjectChoice" class="project-selector">
     <span class="project-selector-label">Project</span>
     <select
       class="project-selector-select"

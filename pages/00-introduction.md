@@ -200,16 +200,6 @@ It is useful to you (that's why you wrote it), so it will be useful to other peo
 -->
 
 ---
-
-# Engineering need
-
-::center
-<div class="w-165">
-<img src="../img/engineering-need.svg" alt="Engineering need: Exploratory, Lab use, Collaborator use, Assured" style="width: 100%;" />
-</div>
-::
-
----
 layout: two-cols-header
 ---
 
@@ -239,6 +229,38 @@ layout: two-cols-header
 ::note
 Engineer according to **reliance and consequence**, not the size of the codebase.
 ::
+::
+
+---
+layout: two-cols-header
+---
+
+# Why is research software different?
+
+::left::
+
+### Industrial software development
+
+Software often addresses an **established need**
+
+- Requirements can be defined in advance
+- Investment in design and QA can be planned
+- Software is expected to be delivered and maintained
+
+::right::
+
+### Exploratory research software
+
+Software is often part of **discovering what is needed**
+
+- Requirements emerge through experimentation
+- Prototypes may change or be discarded
+- Engineering effort competes with scientific investigation
+
+::bottom::
+
+::note
+When requirements are uncertain, the benefits of upfront design and QA are harder to predict
 ::
 
 ---
@@ -510,4 +532,4 @@ Today, we’ll explore what good software engineering looks like when AI can wri
 
 We will use **Python** and **GitHub Codespaces** to work through one small research-software example.
 
-Everything we cover today is **relevant to any programming language** and **any development environment**.
+The engineering principles we cover apply across programming languages and development environments.

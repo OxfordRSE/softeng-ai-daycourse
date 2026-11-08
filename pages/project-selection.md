@@ -1,6 +1,6 @@
 ---
 routeAlias: project-selection
-disabled: false
+disabled: true
 ---
 
 # One course, two projects
@@ -16,37 +16,61 @@ Choose the project for this session by a show of hands. You can change the selec
 ::
 
 ---
-layout: default
----
 
-# Project-aware practical content
-
-<span />
-
-This demonstrates how practical content will adapt to the selected project. The shared engineering workflow stays the same; only the project-specific block below changes.
+# Motivating Project
 
 <CourseProject>
   <template #sir>
 
-### SIR Epidemic Simulator
+<div class="grid grid-cols-3 gap-6 items-center">
 
-SIR-specific practical instructions will appear here when the practicals are added.
+  <!-- Left: animated population compartments -->
+  <div class="col-span-2">
+    <center>
+      Susceptible Infected Recovered (SIR) Model
+    </center>
+    <SIRCompartments />
+  </div>
 
-  </template>
+  <!-- Right: equations -->
+  <div class="col-span-1 text-sm">
 
-  <template #reaction-time>
+**Daily transitions**
 
-### Reaction Time Lab
+$$
+\begin{aligned}
+\Delta I_t &= \beta \frac{S_t I_t}{N}\\
+\Delta R_t &= \gamma I_t
+\end{aligned}
+$$
 
-**Placeholder — practicals not yet available.**
+**Population updates**
 
-The Experimental Psychology variant is planned, but no practical materials exist yet. No SIR instructions are shown for this project.
+$$
+\begin{aligned}
+S_{t+1} &= S_t-\Delta I_t\\
+I_{t+1} &= I_t+\Delta I_t-\Delta R_t\\
+R_{t+1} &= R_t+\Delta R_t
+\end{aligned}
+$$
+
+**Constraints**
+
+::center
+$N = S + I + R$<br />
+::
+
+<br />
+
+::center
+$\beta$ (Transmission rate)<br />
+$\gamma$ (Recovery rate)
+::
+
+  </div>
+</div>
 
   </template>
 </CourseProject>
-
-::note
-Change projects at any time using the selector in the bottom-right corner. The content above updates immediately.
-::
 
 <ProjectSelector />

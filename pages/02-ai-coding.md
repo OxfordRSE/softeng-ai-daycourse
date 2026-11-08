@@ -452,10 +452,10 @@ AI is particularly useful for:
 
 But we still need to decide:
 
-- **What problem are we solving?**
-- **What behaviour do we require?**
-- **What constraints matter?**
-- **How will we know it works?**
+- What problem are we solving?
+- What behaviour do we require?
+- What constraints matter?
+- How will we know it works?
 
 ::bottom::
 
@@ -465,53 +465,152 @@ Delegate implementation work, not responsibility for the result
 
 ---
 
-# Practical 2a — Explore the codebase
+# Codespaces
 
-<span />
+::center
 
-Open the Research Data Checker in Codespaces.
+<a href="https://github.com/features/codespaces" target="_blank" rel="noopener noreferrer"><img src="../img/codespaces.png" alt="GitHub Codespaces" class="border border-gray-300" style="width: 70%;" /></a>
 
-Use **VS Code Chat** to answer:
+[github.com/codespaces](https://www.github.com/codespaces) gives everyone a common, pre-configured development environment.
 
-1. Which file handles command-line arguments?
-2. Where are measurements checked against a range?
-3. Where are the default minimum and maximum values defined?
+For today, think of the Codespace as the machine on which you are developing.
 
-Open the relevant files and verify AI's answers.
-
-::question
-Did AI accurately explain how the existing code works?
 ::
 
 ---
 
-# Practical 2b — Implement a change
+
+# Practical 2 — Open your development environment
 
 <span />
 
-Ask **VS Code Chat** to implement the feature described in `DESIGN.md`:
+We'll use **GitHub Codespaces** as our development computer throughout the day.
 
-```text
-Allow users to specify minimum and maximum measurement limits through command-line options.
-Keep the existing defaults when no options are supplied.
-```
+<CourseProject>
+  <template #sir>
 
-Then run:
+1. Open the [SIR Model repository](https://github.com/OxfordRSE/softeng-ai-daycourse-sir-model).
 
-```bash
-python -m research_check examples/observations.csv
-python -m research_check examples/observations.csv --maximum 9
-```
+<div style="height: 10px;" />
 
-Compare the output.
+::center
+[https://github.com/OxfordRSE/softeng-ai-daycourse-sir-model](https://github.com/OxfordRSE/softeng-ai-daycourse-sir-model)
+::
+
+<div style="height: 12px;" />
+
+  </template>
+</CourseProject>
+
+2. Click **Use this template** → **Create a new repository**.
+3. In your new repository, select **Code → Codespaces → Create codespace on main**.
+4. Wait for VS Code to open in your browser.
 
 ::note
-Inspect the code AI changed. Does the implementation remain simple and understandable?
+Your repository contains the project specification and instructions, but no application implementation.
+::
+
+<ProjectSelector />
+
+---
+
+# Getting to know VS Code
+
+<span />
+
+VS Code is our development environment.
+
+::center
+
+::
+
+- **Explorer** — browse project files
+- **Editor** — inspect and modify files
+- **Terminal** — run commands and tools
+- **AI Chat** — discuss and delegate coding tasks
+
+::note
+You don't need to write Python yourself to work with a coding agent
 ::
 
 ---
 
-# Practical 2c — Linters and autoformatters
+# Practical 2a — Explore the project
+
+<span />
+
+Before asking AI to write code, inspect the starter repository
+
+Open:
+
+- `README.md` — what is this project?
+- `DESIGN.md` — what are we building?
+- `AGENTS.md` — how should the coding agent work?
+
+Use Copilot Chat (Plan mode) to explore the specification:
+
+```text
+Read DESIGN.md and AGENTS.md.
+Summarise what we are building, identify the main constraints, and explain
+how you would approach the implementation. Do not write code yet.
+```
+
+::question
+Does the agent understand the task and its boundaries?
+::
+
+---
+
+# Practical 2b — Build the SIR simulator
+
+<span />
+
+Ask Copilot to implement the agreed specification.
+
+```text
+Read DESIGN.md and implement the model described there.
+
+Follow the project instructions in AGENTS.md.
+
+Keep the implementation small and understandable.
+Run the application and report the result.
+
+Do not commit or push changes.
+```
+
+Inspect the files Copilot creates.
+
+::note
+We are delegating implementation, not the responsibility for understanding what was built
+::
+
+---
+
+# Practical 2c — Run your simulator
+
+<span />
+
+Run the application:
+
+```bash
+python sir.py --beta 0.3 --gamma 0.1
+```
+
+Experiment with the parameters:
+
+- What happens when transmission increases?
+- What happens when recovery becomes faster?
+- Can you find parameters that produce no epidemic growth?
+
+Ask Copilot to explain any results you find surprising.
+
+::question
+Does the behaviour seem consistent with the SIR model?
+::
+
+---
+
+# Practical 2d — Check code quality
 
 <span />
 
@@ -531,27 +630,6 @@ Inspect the results.
 What did Ruff identify or change? Does this establish that the software behaves correctly?
 ::
 
-<!--
-Ruff check produces an import error, in this case an outdated import convention.
-Ruff format changes cli.py line 29 measurements.
--->
-
----
-
-# Practical 2 — Checkpoint
-
-<span />
-
-Review the implementation AI produced.
-- Does it satisfy the intended behaviour?
-- Is the change **simple and focused**?
-- Can you explain the code?
-- Did AI introduce unnecessary complexity?
-
-::note
-A working implementation is a starting point. Inspect the changes, question unnecessary complexity and decide whether to accept them.
-::
-
 ---
 
 # Teaching AI our conventions
@@ -560,21 +638,54 @@ A working implementation is a starting point. Inspect the changes, question unne
 
 We've used **Ruff** to check and format our code.
 
-Rather than repeating these instructions in every prompt, we can record **project-wide instructions** in `AGENTS.md`:
+Rather than repeating these instructions in every prompt, we can add them to `AGENTS.md`:
 
 ```md
 ## Code quality
 
-Follow the project's coding conventions.
-
 Before completing a coding task:
 - Run `ruff check .`
 - Run `ruff format --check .`
-
-Report any failures.
+- Report any failures.
 ```
 
 ::note
-- `DESIGN.md` describes what we're building
-- `AGENTS.md` describes how we expect AI to work
+`DESIGN.md` describes what we're building.
+
+`AGENTS.md` describes how we expect AI to work.
+::
+
+---
+
+# Going further — Explore and extend
+
+<span />
+
+Finished the core practical?
+
+Choose a challenge:
+
+- **Improve the CLI:** Add an option to display daily S, I and R values.
+- **Investigate behaviour:** Explore how the ratio of transmission to recovery affects epidemic growth.
+- **Improve documentation:** Ask AI to add a usage example to `README.md`.
+- **Try another interface:** Use Copilot CLI in the terminal to inspect or extend the project.
+
+Keep changes small and review what the agent produces.
+
+---
+
+# Practical 2 — Checkpoint
+
+<span />
+
+Review what was produced:
+
+- Does the application satisfy `DESIGN.md`?
+- Is the implementation simple and understandable?
+- Did the agent introduce unnecessary dependencies or files?
+- Can you explain how the program works?
+- What evidence do we have that the results are correct?
+
+::note
+A working application is a starting point, not evidence that every requirement has been satisfied.
 ::

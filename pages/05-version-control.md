@@ -294,10 +294,12 @@ We'll leave that for further exploration.
 -->
 
 ---
+layout: two-cols-header
+---
 
 # Who controls the repository?
 
-<span />
+::left::
 
 A coding agent can:
 
@@ -307,6 +309,8 @@ A coding agent can:
 - Create or switch branches
 - Restore earlier versions
 
+::right::
+
 We can give our agents clear boundaries through `AGENTS.md`, e.g.:
 
 ```text
@@ -314,6 +318,8 @@ Modify the working tree.
 Do not stage or commit.
 Stop when the requested change is complete.
 ```
+
+::bottom::
 
 ::note
 The agent proposes and implements changes. We decide what enters the repository history.
@@ -329,28 +335,42 @@ layout: two-cols-header
 
 ::small
 
-1. Inspect the working tree:
+**1. Inspect your working tree**
 
-   ```bash
-   git status
-   git diff  # unstaged changes
-   git log --oneline --graph --all
-   ```
+```bash
+git status
+git diff
+```
 
-2. Create a branch for your work:
+Review the changes made during Coding and Testing.
 
-   ```bash
-   git switch -c my-changes
-   ```
+**2. Create a branch**
 
-3. Stage your changes and inspect what will be committed:
+<CourseProject>
+  <template #sir>
 
-   ```bash
-   git add .
-   git status
-   git diff  # unstaged changes
-   git diff --staged  # staged changes
-   ```
+```bash
+git switch -c sir-development
+```
+
+  </template>
+</CourseProject>
+
+**3. Stage your changes**
+
+<CourseProject>
+  <template #sir>
+
+```bash
+git add sir.py tests/ AGENTS.md
+git status
+git diff --staged
+```
+
+  </template>
+</CourseProject>
+
+Check that only the intended changes are staged.
 
 ::
 
@@ -358,36 +378,86 @@ layout: two-cols-header
 
 ::small
 
-4. Commit the changes:
+**4. Commit your work**
 
-   ```bash
-   git commit -m "Complete course practical changes"
-   ```
+<CourseProject>
+  <template #sir>
 
-5. Inspect the branch and commit in the history:
+```bash
+git commit -m "Implement and test SIR simulator"
+```
 
-   ```bash
-   git log --oneline --graph --all
-   ```
+  </template>
+</CourseProject>
 
-6. Merge into main
+**5. Merge into `main`**
 
-    ```bash
-    git switch main
-    git merge my-changes
-    ```
+<CourseProject>
+  <template #sir>
 
-7. Inspect the merge in the history:
+```bash
+git switch main
+git merge sir-development
+```
 
-   ```bash
-   git log --oneline --graph --all
-   ```
+  </template>
+</CourseProject>
+
+**6. Inspect the history**
+
+```bash
+git log --oneline --graph --all
+```
+
+::note
+Review what you're committing before recording it in the repository history.
+::
 
 ::
 
-<!--
-Walk through these commands and show VSCode interface equivalents.
--->
+<ProjectSelector />
+
+---
+layout: two-cols-header
+---
+
+# Practical 5 — Recovering changes
+
+::left::
+
+Git lets us return to a known-good version.
+
+**1. Make a temporary edit**
+
+Open `sir.py` and make a small, unwanted change.
+
+**2. Inspect the change**
+
+```bash
+git diff
+```
+
+::right::
+
+**3. Discard the edit**
+
+```bash
+git restore sir.py
+```
+
+**4. Verify**
+
+```bash
+git status
+```
+
+The unwanted change should be gone.
+
+::bottom::
+
+::note
+`git restore` discards uncommitted changes. Use it only when you're sure you don't need them.
+::
 
 ---
 layout: two-cols-header
@@ -397,30 +467,28 @@ layout: two-cols-header
 
 ::left::
 
-**Undoing changes**
+**Explore your history**
 
-After committing your work:
-
-1. Make an unwanted edit to an existing tracked file
-2. Inspect it using `git diff`
-3. Discard the edit using `git restore <file>`
-4. Confirm the edit has been undone
-
-::note
-Git lets us experiment without permanently losing a known-good version
-::
+- Use `git log` to inspect earlier commits.
+- Use `git show` to inspect the changes introduced by a commit.
+- Compare two commits using `git diff`.
+- Explore the history using VS Code's Source Control view.
 
 ::right::
 
-**Navigation**
+**Explore branches**
 
-Explore the repository's history using the terminal or VS Code's Source Control view.
+- List branches using `git branch -a`.
+- Switch between branches.
+- Compare their histories.
+- Create a temporary branch and experiment.
+- Return to `main` when finished.
 
-- Inspect the available branches (`git branch -a`).
-- Switch between branches (`git switch <branch>`).
-- Compare the files and commit history.
-- Create new branches and commits.
-- Return to `main` when done.
+::bottom::
+
+::note
+Branches let us explore alternatives without immediately changing our main line of development.
+::
 
 ---
 

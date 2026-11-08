@@ -11,50 +11,58 @@ routeAlias: wrapup
 layout: two-cols-header
 ---
 
-# What if the test is wrong?
+# What if the model is wrong?
 
 ::left::
 
-Suppose we specify:
-> **A repeated `sample_id` is an error.**
+<CourseProject>
+  <template #sir>
 
-We write the test ourselves. The agent implements the behaviour correctly. The test passes. CI is green. The change is reviewed.
+Our SIR simulator assumes that everyone mixes homogeneously.
 
-Then we encounter longitudinal data:
+We've tested that:
 
-```text
-sample_id   timepoint
-A001        0
-A001        1
-A001        2
-```
+<li> The population is conserved</li>
+<li> Vaccination changes the initial populations correctly</li>
 
-The software is behaving **exactly as specified**.
+  </template>
+</CourseProject>
 
-The specification was wrong for this use case.
+Our tests pass. CI is green. The code has been reviewed.
+
+But consider a population where individuals have very different contact patterns.
+
+**Our software may be correct, but our scientific model may be inappropriate.**
 
 ::right::
 
 ::v-click
+
 ::question
 What should we do next?
 ::
+
 ::
 
 ::v-click
-Raise a GitHub Issue!
 
-* **Document** the unexpected behaviour
-* Provide a reproducible example
-* Discuss what the correct behaviour should be
-* Agree on changes to the specification and tests
-* Implement the fix, potentially with AI assistance
+- Revisit the scientific assumptions
+- Discuss whether the model is appropriate
+- Record the limitations
+- Agree on any changes to the specification
+- Develop and verify a revised model if needed
+
 ::
 
-<!--
-Run `python -m research_check examples/longitudinal.csv`
-to reproduce the longitudinal-data example.
--->
+::v-click
+
+::note
+Software correctness does not establish scientific validity.
+::
+
+::
+
+<ProjectSelector />
 
 ---
 

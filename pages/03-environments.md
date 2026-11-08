@@ -18,7 +18,7 @@ To reproduce a result, we need more than the source code.
 ::center
 
 ```mermaid
-flowchart TD
+flowchart BT
     S["Source code"] --> R["<b>Research result</b>"]
     D["Data"] --> R
     E["Environment"] --> R
@@ -83,14 +83,13 @@ The software environment includes your system, and other software packages you h
 
 A **dependency** is software your project relies on
 
-::v-clicks
+- A *direct* dependency is chosen by your project
+- A *transitive* dependency is required by one of those dependencies
 
-A **direct dependency** is chosen by your project
-
-A **transitive dependency** is required by one of those dependencies
+::v-click
 
 ::note
-Dependencies introduce **trust**
+Dependencies require **trust**
 ::
 
 ::
@@ -263,7 +262,6 @@ def main():
 - Explain why we would use one over the other
 
 Windows versioning: 1.0, 2.0, 3.0, 3.1, 95, 98, ME, XP, Vista, 7, 8, 8.1, 10, 11
-
 -->
 
 ---
@@ -303,9 +301,9 @@ layout: two-cols-header
 
 <span />
 
-Virtual environments, containers and other isolation mechanisms let different projects have different requirements.
+Different projects may require incompatible versions of the same software.
 
-Isolation lets environments **coexist**. It does **not** make your code compatible with a dependency's API.
+Isolated environments let those requirements coexist, without changing the applications themselves.
 
 ::left::
 
@@ -334,8 +332,6 @@ Reproduce the software **environment**, not just the source file
 ::
 
 ---
-disabled: true
----
 
 # Environments
 
@@ -343,16 +339,16 @@ disabled: true
 
   <div class="flex flex-col items-center space-y-1">
     <div class="flex space-x-1">
-    <div class="w-40 h-20 border-2 border-yellow-500 text-yellow-500 flex items-center justify-center rounded">Python venv</div>
+    <div class="w-40 h-20 border-2 border-yellow-500 text-yellow-500 flex items-center justify-center rounded">venv</div>
     </div>
     <div class="flex space-x-1">
-      <div class="w-80 h-20 border-2 border-amber-500 text-amber-500 flex items-center justify-center rounded" >conda</div>
+      <div class="w-80 h-20 border-2 border-amber-500 text-amber-500 flex items-center justify-center rounded" v-click>conda</div>
     </div>
     <div class="flex space-x-1">
-      <div class="w-120 h-20 border-2 border-orange-500 text-orange-500 flex items-center justify-center rounded" >Container</div>
+      <div class="w-120 h-20 border-2 border-orange-500 text-orange-500 flex items-center justify-center rounded" v-click >Container</div>
     </div>
     <div class="flex space-x-1">
-      <div class="w-160 h-20 border-2 border-red-500 text-red-500 flex items-center justify-center rounded" >Virtual Machine</div>
+      <div class="w-160 h-20 border-2 border-red-500 text-red-500 flex items-center justify-center rounded" v-click >Virtual Machine</div>
     </div>
   </div>
 
@@ -366,7 +362,7 @@ layout: two-cols-header
 
 ::left::
 
-A project can express different compatibility requirements:
+A project can specify which dependency versions it supports:
 
 ```text
 numpy == 2.4.3
@@ -375,17 +371,26 @@ numpy >= 2.1, < 2.6
 numpy >= 2
 ```
 
-The important question is not which syntax you prefer, but **what future change are you prepared to accept?**
+These express different trade-offs between **compatibility, maintenance and reproducibility**.
 
-Pinning everything forever is not automatically the right answer; neither is accepting every future release.
+The question is: **what future changes are we prepared to accept?**
 
 ::right::
 
-We must decide whether to accept **any installed version**, a **compatible range**, or an **exact version**.
+What happens when a dependency introduces a breaking change?
 
-::note
-The choice balances compatibility, maintenance and reproducibility
+```text
+AttributeError: `np.float_` was removed
+in the NumPy 2.0 release.
+```
+
+The source code hasn't changed, but the environment has.
+
+::question
+Should we constrain the dependency version or update the code?
 ::
+
+::bottom::
 
 <CourseLink
   title="Packaging and Dependency Management"
@@ -394,73 +399,69 @@ The choice balances compatibility, maintenance and reproducibility
   v-click
 />
 
-<!--
-numpy ~= 2.4 means 2.4 or later, but not 3.0; equivalent to >= 2.4, < 3.0
--->
-
 ---
 layout: two-cols-header
 ---
 
-# When a dependency breaks
+# What is a container?
 
 ::left::
 
-Your research software worked yesterday.
+A container provides an **isolated environment** in which to run software.
 
-You hand it to a colleague, and they run it in their environment.
+```mermaid
+flowchart TB
+    subgraph H["Host machine"]
+        direction LR
 
-```text
-ImportError: cannot import name '...' from 'numpy'
+        subgraph A["Container A"]
+            direction TB
+            A1["Python 3.12"]
+            A2["NumPy 1.x"]
+        end
+
+        subgraph B["Container B"]
+            direction TB
+            B1["Python 3.12"]
+            B2["NumPy 2.x"]
+        end
+    end
+
+    style H fill:#f8fafc,stroke:#64748b,stroke-width:2px
+    style A fill:#fff4e5,stroke:#d97706,stroke-width:2px
+    style B fill:#fff4e5,stroke:#d97706,stroke-width:2px
+
+    style A1 fill:#dbeafe,stroke:#2563eb,stroke-width:2px
+    style A2 fill:#e0f2fe,stroke:#0284c7,stroke-width:2px
+    style B1 fill:#dbeafe,stroke:#2563eb,stroke-width:2px
+    style B2 fill:#e0f2fe,stroke:#0284c7,stroke-width:2px
 ```
-
-The source code has not changed.
-
-::question
-What has changed, and how should we respond?
-::
 
 ::right::
 
-Possible explanations include:
+Container images package software with its runtime, dependencies
+and configuration.
 
-- an incompatible dependency version;
-- an incomplete dependency specification;
-- the wrong Python environment;
-- code relying on an API that has changed.
+Ready-made images are available for many environments (https://hub.docker.com/):
 
-The first task is **diagnosis**, not modification.
+- **Python** — `python:3.12-slim`
+- **R** — `rocker/r-ver`
+- **MATLAB** — official MathWorks images
 
----
+You can also build images for your own software.
 
-# Which Python are you using?
-
-<span />
-
-A Python environment determines which interpreter and installed packages your code uses.
-
-```bash
-python -m venv .venv          # create an isolated environment
-source .venv/bin/activate     # activate it (Windows: .venv\Scripts\activate)
-which python                  # confirm the active interpreter
-python -m pip install numpy   # install into that environment
-python -m pip list            # what is installed
-deactivate                    # return to the system environment
-```
-
-Two environments can contain different versions of the same package.
-
-```text
-Project A                 Project B
-    │                          │
-Python environment A      Python environment B
-    │                          │
-NumPy 1.x                 NumPy 2.x
-```
+::bottom::
 
 ::note
-Installing a package is not enough — it must be installed in the environment running your code.
+Containers share the host operating system, but maintain their own filesystem and installed software
 ::
+
+<CourseLink
+  title="Containerisation with Docker"
+  description="Learn how Docker images and containers provide isolated, reproducible environments."
+  url="https://www.rse.ox.ac.uk/training"
+  v-click
+/>
 
 ---
 
@@ -468,29 +469,71 @@ Installing a package is not enough — it must be installed in the environment r
 
 <span />
 
-**Environment A — existing environment**
+We will run the **same Python application** with different versions of NumPy.
 
-```bash
-python -m research_check examples/observations.csv
-python -c "import numpy; print(numpy.__version__)"
+Create `docker/app.py`:
+
+```python
+import numpy as np
+
+print(f"NumPy version: {np.__version__}")
+print(np.float_(3.14))
 ```
 
-**Environment B — NumPy 2.x**
+Create `docker/requirements.txt`:
 
-```bash
-python -m venv .venv2
-source .venv2/bin/activate
-python -m pip install "numpy>=2"
-python -c "import numpy; print(numpy.__version__)"
-python -m research_check examples/observations.csv
-```
-
-You should receive the following error:
 ```text
-AttributeError: `np.float_` was removed in the NumPy 2.0 release.
+numpy>=1.26,<2
 ```
 
-Finally, deactivate environment B: `deactivate`
+::note
+The source code will remain unchanged throughout the exercise.
+::
+
+
+---
+layout: two-cols-header
+---
+
+# Practical 3 — Change the environment
+
+::left::
+
+Inspect the supplied docker/Dockerfile. It describes how to build the environment in which our application will run.
+
+From the `docker/` directory:
+
+**1. Build and run with NumPy 1.x**
+
+```bash
+docker build -t numpy-demo:v1 .
+docker run --rm numpy-demo:v1
+```
+
+The application should run successfully.
+
+::right::
+
+**2. Change `requirements.txt`**
+
+```text
+numpy>=2,<3
+```
+
+**3. Build and run again**
+
+```bash
+docker build -t numpy-demo:v2 .
+docker run --rm numpy-demo:v2
+```
+
+The application now fails because NumPy 2 removed `np.float_`.
+
+::bottom::
+
+::note
+**Going further:** You can connect to a container with `docker run -it --rm numpy-demo:v2 bash` to explore the environment. Type `exit` to leave the container.
+::
 
 ---
 
@@ -498,23 +541,22 @@ Finally, deactivate environment B: `deactivate`
 
 <span />
 
-You have run the **same source code** in two different environments
+We ran the **same source code** in two different containers.
 
-- One works
-- One fails because a dependency API has changed
+The environments coexist, but the code is not compatible with both.
 
 ::question
 **Should we restore the original environment or update the code?**
 ::
 
-There is no universal answer. Consider:
+Consider:
 
 - Reproducing previous results
 - Maintaining compatibility
 - Supporting future development
 
 ::note
-Isolation lets environments coexist, it does not resolve incompatibility
+Isolation preserves environments. Compatibility still requires engineering decisions.
 ::
 
 ---
@@ -532,8 +574,42 @@ But it needs to know:
 - **What changes** is it allowed to make?
 - **What must remain reproducible?**
 
+Dependency specifications provide **task-relevant context**, reducing the risk of AI generating code for old or incompatible APIs
+
 Project instructions such as `AGENTS.md` can help communicate these expectations
 
 ::note
 An agent should not silently change the environment to make a problem disappear
 ::
+
+---
+
+# Containers and AI agents
+
+<span />
+
+AI coding agents can **execute commands, install software and modify files**.
+
+Running an agent inside a container can help limit the consequences of those actions.
+
+- **Isolation:** Separate the agent's execution environment from your computer.
+- **Reproducibility:** Provide a known runtime, tools and dependencies.
+- **Disposability:** Rebuild or discard the environment after experimentation.
+
+::note
+A container is not automatically a secure sandbox — network access, credentials, mounted files and permissions still matter.
+::
+
+<!--
+We've been using a containerised development environment
+through GitHub Codespaces throughout the course.
+
+This gives us a consistent environment and some isolation
+from our own computers.
+
+However, agents may still access the network, GitHub credentials,
+or other resources made available to the container.
+
+Mention that .devcontainer/devcontainer.json can define the
+development environment, but don't go into its syntax.
+-->

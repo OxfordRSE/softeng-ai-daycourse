@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 export type CourseProjectId = 'sir' | 'reaction-time'
 
@@ -25,6 +25,9 @@ export const PROJECTS: CourseProject[] = [
 
 export const DEFAULT_PROJECT: CourseProjectId = 'sir'
 export const PROJECT_STORAGE_KEY = 'oxrse.softeng-ai.course-project'
+
+// A choice only makes sense when more than one project is registered.
+export const hasProjectChoice = computed(() => PROJECTS.length > 1)
 
 function isCourseProjectId(value: unknown): value is CourseProjectId {
   return PROJECTS.some(project => project.id === value)

@@ -242,14 +242,14 @@ transition: none
 
 ::left::
 
-When a defect is found:
-- Reproduce the problem
-- Add a failing test
-- Fix the implementation
-- Keep the test
+When adding or changing behaviour:
+- define the expected result
+- write a failing test
+- implement the behaviour
+- keep the test
 
 ::note
-The bug should only surprise us once
+Tests make expected behaviour explicit before implementation
 ::
 
 ::right::
@@ -279,14 +279,14 @@ transition: none
 
 ::left::
 
-When a defect is found:
-- Reproduce the problem
-- Add a failing test
-- Fix the implementation
-- Keep the test
+When adding or changing behaviour:
+- define the expected result
+- write a failing test
+- implement the behaviour
+- keep the test
 
 ::note
-The bug should only surprise us once
+Tests make expected behaviour explicit before implementation
 ::
 
 ::right::
@@ -318,14 +318,14 @@ layout: two-cols-header
 
 ::left::
 
-When a defect is found:
-- Reproduce the problem
-- Add a failing test
-- Fix the implementation
-- Keep the test
+When adding or changing behaviour:
+- define the expected result
+- write a failing test
+- implement the behaviour
+- keep the test
 
 ::note
-The bug should only surprise us once
+Tests make expected behaviour explicit before implementation
 ::
 
 ::note
@@ -352,33 +352,132 @@ def test_sinc():
 Tests provide executable expectations that help constrain AI-generated changes.
 
 ---
+layout: two-cols-header
+---
 
-# Practical 4a — Define behaviour with a test
+# Practical 4a — Test existing behaviour
+
+<CourseProject>
+  <template #sir>
 
 <span />
 
-The Research Data Checker should classify non-finite measurements (`nan`, `inf`, `-inf`) as **invalid**, not out of range.
+Our SIR simulator models a **closed population**:
 
-Open `tests/test_numeric_range.py` and add:
+$$
+S_t + I_t + R_t = N
+$$
+
+  </template>
+</CourseProject>
+
+::left::
+
+<CourseProject>
+  <template #sir>
+
+Create `tests/test_sir.py`:
 
 ```python
-def test_non_finite_measurement_is_invalid():
-    rows = [{"measurement": "nan"}]
-    issues = check_numeric_range(rows, "measurement", 0.0, 100.0)
+import pytest
+from sir import simulate_sir
 
-    assert len(issues) == 1
-    assert issues[0].kind == "invalid"
+def test_population_conservation():
+    S, I, R = simulate_sir(1000, 10, 0.3, 0.1, 100)
+
+    for s, i, r in zip(S, I, R):
+        assert s + i + r == pytest.approx(1000)
 ```
+
+  </template>
+</CourseProject>
+
+::right::
+
+<CourseProject>
+  <template #sir>
 
 Run:
 
 ```bash
-pytest
+python -m pip install pytest
+python -m pytest
 ```
 
+  </template>
+</CourseProject>
+
+::bottom::
+
+<CourseProject>
+  <template #sir>
+
 ::question
-**Why does the new test fail?**
+What does this test establish about our model?
 ::
+
+  </template>
+</CourseProject>
+
+<ProjectSelector />
+
+---
+layout: two-cols-header
+---
+
+# Practical 4b — Specify new behaviour
+
+<CourseProject>
+  <template #sir>
+
+<span />
+
+We want to support **vaccination before the epidemic begins**. Vaccination moves a fraction of the initially susceptible population directly into the recovered compartment.
+
+  </template>
+</CourseProject>
+
+::left::
+
+<CourseProject>
+  <template #sir>
+
+Add this test to `tests/test_sir.py`:
+
+```python
+def test_initial_vaccination():
+    S, I, R = simulate_sir(
+        population=1000,
+        infected=10,
+        beta=0.3,
+        gamma=0.1,
+        days=0,
+        vaccination=0.2,
+    )
+
+    assert S[0] == 792
+    assert I[0] == 10
+    assert R[0] == 198
+```
+
+  </template>
+</CourseProject>
+
+::right::
+
+<CourseProject>
+  <template #sir>
+
+Run `python -m pytest` again.
+
+::question
+Why does the new test fail?
+::
+
+  </template>
+</CourseProject>
+
+<ProjectSelector />
 
 ---
 
@@ -408,7 +507,7 @@ We can choose when to explore, when to plan and when to let AI enact
 
 A useful workflow separates deciding **what to change** from actually changing it.
 
-<div class="w-140 mx-auto mt-8">
+<div class="w-200 mx-auto mt-8">
 
 ```mermaid
 flowchart LR
@@ -438,29 +537,47 @@ Review the plan before implementation, and inspect the changes afterwards
 layout: two-cols-header
 ---
 
-# Practical 4b — Implement the behaviour
+# Practical 4c — Implement the behaviour
 
 ::left::
+
+<CourseProject>
+  <template #sir>
 
 You now have a **failing test that defines the required behaviour**.
 
 In VS Code Chat, select **Plan** mode and ask:
 
-::note
-Investigate why this test fails. Propose the smallest change needed to satisfy it. Do not modify any files.
-::
+```text
+We want to extend the SIR simulator to support initial vaccination.
+Vaccination is an optional fraction between 0 and 1, applied to the initially susceptible population before the simulation begins.
+Vaccinated individuals move directly into the recovered compartment, representing immediate and complete protection.
+A failing test has already been added.
+Inspect the implementation and propose the smallest change needed to satisfy the test while preserving existing behaviour.
+Do not modify any files yet.
+```
 
 Review the proposed plan.
 
 **Does it address the requirement without introducing unrelated changes?**
 
+  </template>
+</CourseProject>
+
 ::right::
+
+<CourseProject>
+  <template #sir>
 
 In the same conversation, switch to **Agent** mode and ask:
 
-::note
-Implement the agreed plan. Do not modify the test or `find_duplicates`.
-::
+```text
+Implement the agreed vaccination change.
+Do not modify the tests or the underlying SIR update equations.
+Keep the change small and focused.
+Run pytest and report the results.
+Do not commit or push changes.
+```
 
 Then:
 
@@ -468,13 +585,42 @@ Then:
 2. Confirm the new and existing tests pass.
 3. Inspect the changes AI made.
 
+  </template>
+</CourseProject>
+
+<ProjectSelector />
+
+---
+
+# Going further — Test your simulator
+
+<CourseProject>
+  <template #sir>
+
+<span />
+
+Choose a challenge:
+
+- **Regression:** Does zero vaccination preserve the original behaviour?
+- **Validation:** Are vaccination values outside 0–1 rejected?
+- **Known answer:** Does the first-day update match a hand calculation?
+- **Model properties:** Do compartment populations remain non-negative?
+- **New feature:** Introduce vaccination on a configurable day.
+
+Use AI to help develop the tests, but decide what behaviour you expect before asking it to implement changes.
+
+  </template>
+</CourseProject>
+
+<ProjectSelector />
+
 ---
 
 # Practical 4 — Checkpoint
 
 <span />
 
-<div class="w-180 mx-auto mt-8">
+<div class="w-200 mx-auto mt-8">
 
 ```mermaid
 flowchart LR
@@ -499,6 +645,7 @@ flowchart LR
 Discuss:
 - How did the failing test constrain what the agent implemented?
 - What did you still need to check or decide yourself?
+- What else might we want to test?
 
 ---
 layout: two-cols-header
@@ -516,7 +663,7 @@ AI can be particularly useful here: it can inspect existing code and generate a 
 
 ::right::
 
-**Going further**: Ask VS Code Chat to generate characterisation tests for `find_duplicates`. Inspect what behaviour the tests preserve.
+**Going further**: Ask Copilot to generate characterisation tests for the your current code's existing command-line behaviour. Inspect what those tests preserve, and consider whether the behaviour is necessarily correct.
 
 ::bottom::
 

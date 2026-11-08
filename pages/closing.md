@@ -35,9 +35,10 @@ Selected courses:
 
 ---
 layout: section
+routeAlias: questions
 ---
 
-# Feedback
+# Questions & Feedback
 
 ::center
 

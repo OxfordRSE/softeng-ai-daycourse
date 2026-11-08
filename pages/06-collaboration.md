@@ -58,6 +58,8 @@ When several people contribute, problems need to be:
 - **Discussed** and prioritised
 - **Assigned** and tracked to resolution
 
+::bottom::
+
 ::note
 **Issue tracking** provides a shared record of problems and proposed changes
 ::
@@ -92,7 +94,7 @@ The remote repository becomes the **agreed single source of truth** for the proj
 
 <span />
 
-We'll explore the Research Data Checker repository together.
+We'll explore the repository together.
 
 - **Code** — files, branches and commit history
 - **Issues** — proposed work and discussions
@@ -105,23 +107,21 @@ GitHub brings together the tools needed to coordinate software development
 
 ---
 
-# From individual work to collaboration
+# From individual work to shared development
 
 <span />
 
-So far, we've been working independently on our own copies of the Research Data Checker
-
-Now we want to **contribute improvements to a shared project**
+Now we want to **publish our work and manage proposed changes**.
 
 How can we:
 
-- **Propose** a change before implementing it?
-- **Develop** the change without disrupting others?
-- **Review** each other's contributions?
-- **Decide** what should become part of the shared project?
+- Share our code and its history?
+- Check changes automatically?
+- Review changes before accepting them?
+- Delegate development tasks to AI agents?
 
 ::note
-We'll use GitHub to work through this process together
+The same practices support collaboration between researchers and supervised AI development.
 ::
 
 ---
@@ -158,42 +158,26 @@ layout: two-cols-header
 
 <span />
 
-You've committed and merged your changes locally. Now let's publish them to GitHub.
+You've committed and merged your code and tests locally.
 
-1. In your Codespace, check your current branch:
+**1. Check your current branch**
 
-   ```bash
-   git status
-   ```
+```bash
+git status
+```
 
-2. Push your changes to your fork:
+**2. Push to GitHub**
 
-   ```bash
-   git push
-   ```
+```bash
+git push
+```
 
-3. Open your fork on GitHub and inspect its commit history.
+**3. Open your repository on GitHub**
 
-::question
-What changed on GitHub?
-::
-
----
-
-# Practical 6b — Your fork and the upstream project
-
-<span />
-
-You've published your changes to your own GitHub repository.
-
-Open the original [Research Data Checker](https://github.com/OxfordRSE/softeng-ai-daycourse-data-checker) repository on GitHub.
-
-- Can you see your commits in the upstream repository?
-- Can you see the changes made by other participants?
-- Who can merge changes into the upstream repository?
+Inspect the files and commit history.
 
 ::question
-**How can we contribute our work without directly modifying the upstream repository?**
+What's the difference between a local commit and pushing to GitHub?
 ::
 
 ---
@@ -202,13 +186,20 @@ Open the original [Research Data Checker](https://github.com/OxfordRSE/softeng-a
 
 <span />
 
-An issue provides a shared place to discuss a proposed change.
-
 **Instructor demonstration:**
 
-- Open the prepared issue describing the feature we've implemented today
-- Identify its interface, boundary and acceptance criteria
-- Show how discussion can clarify the task before implementation
+- An issue provides a shared place to discuss a proposed change
+- We want to add a feature to our codebase
+
+**Consider:**
+
+- **Interface:** An interactive Streamlit dashboard
+- **Boundary:** Reuse the existing model
+- **Acceptance:** The interface runs, dependencies are documented, and existing tests pass
+
+::note
+A useful issue describes the problem and expected behaviour, not necessarily how to implement it
+::
 
 ---
 
@@ -239,26 +230,6 @@ Who will maintain it? Is the design understandable? Does it add a dependency or 
 
 ---
 
-# Practical 6c — Propose your changes
-
-<span />
-
-You've pushed your course changes to your fork. Now propose them to the **upstream repository**
-
-1. Open your fork on GitHub and select **Contribute → Open pull request**
-2. Check the PR direction:
-   - **Base:** upstream repository, `main`
-   - **Compare:** your fork, `main`
-3. Describe the changes you made during the course
-4. Inspect **Files changed**
-5. Submit the pull request
-
-::question
-Is this a focused, reviewable contribution?
-::
-
----
-
 # Continuous Integration
 
 <span />
@@ -276,12 +247,37 @@ For a Python project, these might include:
 
 The results are reported to contributors and reviewers.
 
+::note
+Remember isolated environments? GitHub Actions runs our checks in a fresh environment, typically a virtual machine.
+::
+
 <CourseLink
   title="Continuous Integration"
   description="Continuous integration with GitHub-based workflows."
   url="https://www.rse.ox.ac.uk/training"
   v-click
 />
+
+---
+
+# Practical 6b — Automate your checks
+
+<span />
+
+Open your repository on GitHub.
+
+1. Select **Actions** → **New workflow**.
+2. Choose the **Python package** workflow template.
+3. Inspect the generated workflow:
+   - When does it run?
+   - Which Python versions does it test?
+   - Which commands does it execute?
+4. Adjust the Python versions to match your project.
+5. Commit the workflow and inspect the results under **Actions**.
+
+::question
+What evidence does a successful workflow provide?
+::
 
 ---
 layout: two-cols-header
@@ -353,23 +349,6 @@ AI can help to:
 But an AI review is **additional input**, not independent approval.
 
 ---
-
-# Practical 6d — Review a colleague's PR
-
-<span />
-
-Open another participant's pull request in the upstream repository.
-
-1. Read the description and inspect **Files changed**.
-2. Check the CI results.
-3. Identify one thing that is clear and one thing that needs clarification.
-4. Leave a constructive review comment.
-
-::question
-**Would you recommend accepting the contribution? Why?**
-::
-
----
 layout: two-cols-header
 ---
 
@@ -410,7 +389,7 @@ Who will:
 - Change it when requirements evolve?
 
 ::note
-AI can make code cheap to produce without making it cheap to own.
+AI can make code cheap to produce without making it cheap to own
 ::
 ::
 
@@ -451,35 +430,130 @@ The contributor and maintainer may therefore see the same PR very differently.
 
 <span />
 
-A well-specified **issue** can provide an AI agent with a bounded implementation task:
+We've learned how to:
 
-- **Interface** — what should change?
-- **Boundary** — what must remain unchanged?
-- **Acceptance** — how will we know it worked?
+- Specify requirements
+- Implement and inspect changes
+- Manage dependencies
+- Write tests
+- Use Git and GitHub
+- Run automated checks
 
-The agent can implement the change and propose a **pull request**
-
-**CI** provides automated evidence, but **human review** determines whether to accept it
+Now we can delegate a larger task
 
 ::note
-A well-specified problem can enable AI to undertake the development cycle, producing a tested pull request for human review
+An agent can use these tools to implement a feature and propose a tested pull request for review
 ::
 
-<!--
-Before the course, assign the same prepared issue to a coding agent
-and retain its resulting pull request.
+---
 
-Participants have now experienced the full development workflow
-themselves. Show how the agent can undertake that workflow from
-the same issue.
+# Practical 6c — Delegate using Copilot CLI
 
-Compare its implementation and CI results with participant PRs.
+<span />
 
-Ask: Would we accept this contribution? What evidence supports
-that decision?
+<CourseProject>
+  <template #sir>
 
-The agent's PR is another proposal for review, not a model answer.
--->
+**1. Start Copilot CLI**
+
+```bash
+copilot
+```
+
+**2. Delegate the task**
+
+Switch to `Agent` mode and provide the prompt:
+
+```text
+Create a Streamlit dashboard for our SIR simulator.
+Reuse simulate_sir() without changing the numerical model.
+Allow users to adjust parameters and visualise S, I and R.
+Record dependencies and document how to run the app.
+Create a feature branch, commit and push the changes, then open a PR against main in this repository.
+Run the existing checks. Do not merge the PR.
+```
+
+  </template>
+</CourseProject>
+
+::note
+The agent can implement the feature, but we decide whether to accept it.
+::
+
+<ProjectSelector />
+
+---
+
+# Practical 6d — Review the agent's PR
+
+<span />
+
+Open the pull request proposed by your coding agent.
+
+**Inspect:**
+
+1. **Files changed** — does the diff implement the requirement?
+2. **Dependencies** — are new packages recorded?
+3. **Documentation** — can someone else run the dashboard?
+4. **Checks** — do the existing tests and CI pass?
+5. **Scope** — did the agent change anything unrelated?
+
+::question
+Would you accept this contribution? What evidence supports your decision?
+::
+
+---
+layout: two-cols-header
+---
+
+# Practical 6e — Run your application!
+
+<span />
+
+Let's see what your coding agent has built.
+
+::left::
+
+**1. Merge the pull request**
+
+On GitHub, select **Merge pull request** after reviewing the changes and checks.
+
+**2. Update your Codespace**
+
+```bash
+git switch main
+git pull
+```
+
+::right::
+
+**3. Install dependencies**
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+**4. Launch Streamlit**
+
+```bash
+python -m streamlit run app.py
+```
+
+Open the forwarded port in Codespaces.
+
+::bottom::
+
+<CourseProject>
+  <template #sir>
+
+::question
+Can you change the parameters and see the epidemic curves respond?
+::
+
+  </template>
+</CourseProject>
+
+<ProjectSelector />
 
 ---
 layout: two-cols-header
@@ -508,18 +582,14 @@ flowchart TD
 
 We've seen how to:
 
-- Define a change through an issue
-- Propose an implementation through a PR
-- Run automated checks with CI
-- Review the proposed changes
-- Decide whether to accept the contribution
+- Publish a repository on GitHub
+- Configure automated checks
+- Delegate a feature to an AI agent
+- Inspect a proposed pull request
+- Decide whether to accept the change
 
 ::note
-A pull request is a proposal. Acceptance remains a human decision.
-::
-
-::question
-What evidence would justify accepting a contribution?
+CI provides automated evidence. Human review determines whether the contribution is acceptable.
 ::
 
 ---

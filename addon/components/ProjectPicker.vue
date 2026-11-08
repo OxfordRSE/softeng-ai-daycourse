@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { activeProject, PROJECTS, setProject } from '../composables/useCourseProject'
+import { activeProject, hasProjectChoice, PROJECTS, setProject } from '../composables/useCourseProject'
 </script>
 
 <template>
-  <div class="project-picker" role="group" aria-label="Choose a project for this session">
+  <div
+    v-if="hasProjectChoice"
+    class="project-picker"
+    role="group"
+    aria-label="Choose a project for this session"
+  >
     <button
       v-for="project in PROJECTS"
       :key="project.id"

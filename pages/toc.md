@@ -28,27 +28,27 @@ table th {
       <td>Research software, engineering effort and AI agency</td>
     </tr>
     <tr>
-      <td>09:50</td>
+      <td>10:00</td>
       <td><Link to="design" title="1. Software design" /></td>
       <td>Requirements, specifications and design decisions</td>
     </tr>
     <tr>
-      <td>10:20</td>
+      <td>10:30</td>
       <td><Link to="coding" title="2. Coding with AI" /></td>
       <td>Implementation, code quality and automated formatting</td>
     </tr>
     <tr>
-      <td>11:05</td>
+      <td>11:30</td>
       <td><strong>Break</strong></td>
       <td></td>
     </tr>
     <tr>
-      <td>11:20</td>
+      <td>11:45</td>
       <td><Link to="environments" title="3. Environments" /></td>
       <td>Dependencies, version constraints and reproducibility</td>
     </tr>
     <tr>
-      <td>11:50</td>
+      <td>12:15</td>
       <td><Link to="testing" title="4. Software testing" /></td>
       <td>Automated tests, test-driven development and verification</td>
     </tr>
@@ -63,19 +63,20 @@ table th {
       <td>Tracking changes, branching, committing and merging</td>
     </tr>
     <tr>
-      <td>14:50</td>
-      <td><strong>Break</strong></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>15:05</td>
+      <td>14:45</td>
       <td><Link to="collaborative-coding" title="6. Collaborative software development" /></td>
       <td>GitHub, pull requests, continuous integration and code review</td>
     </tr>
     <tr>
-      <td>16:15</td>
+      <td>16:00</td>
       <td><Link to="wrapup" title="Wrap-up" /></td>
       <td>Scientific assumptions and proportionate engineering</td>
+    </tr>
+    <tr>
+      <td>16:10</td>
+      <td><Link to="questions" title="Questions and discussion" /></td>
+      <td>Open discussion and feedback</td>
+      <td></td>
     </tr>
     <tr>
       <td>16:30</td>
