@@ -376,7 +376,7 @@ $$
 <CourseProject>
   <template #sir>
 
-Create `tests/test_sir.py`:
+Create `test_sir.py`:
 
 ```python
 import pytest
@@ -400,8 +400,8 @@ def test_population_conservation():
 Run:
 
 ```bash
-python -m pip install pytest
-python -m pytest
+pip install pytest
+pytest
 ```
 
   </template>
@@ -442,7 +442,7 @@ We want to support **vaccination before the epidemic begins**. Vaccination moves
 <CourseProject>
   <template #sir>
 
-Add this test to `tests/test_sir.py`:
+Add this test to `test_sir.py`:
 
 ```python
 def test_initial_vaccination():
@@ -455,9 +455,9 @@ def test_initial_vaccination():
         vaccination=0.2,
     )
 
-    assert S[0] == 792
-    assert I[0] == 10
-    assert R[0] == 198
+    assert S[0] == pytest.approx(792)
+    assert I[0] == pytest.approx(10)
+    assert R[0] == pytest.approx(198)
 ```
 
   </template>
@@ -468,7 +468,7 @@ def test_initial_vaccination():
 <CourseProject>
   <template #sir>
 
-Run `python -m pytest` again.
+Run `pytest` again.
 
 ::question
 Why does the new test fail?

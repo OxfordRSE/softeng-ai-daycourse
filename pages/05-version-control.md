@@ -339,7 +339,7 @@ layout: two-cols-header
 
 ```bash
 git status
-git diff
+git diff  # press 'q' to exit the viewer
 ```
 
 Review the changes made during Coding and Testing.
@@ -350,7 +350,7 @@ Review the changes made during Coding and Testing.
   <template #sir>
 
 ```bash
-git switch -c sir-development
+git switch -c sir-model
 ```
 
   </template>
@@ -362,7 +362,7 @@ git switch -c sir-development
   <template #sir>
 
 ```bash
-git add sir.py tests/ AGENTS.md
+git add sir.py test_sir.py AGENTS.md
 git status
 git diff --staged
 ```
@@ -397,7 +397,7 @@ git commit -m "Implement and test SIR simulator"
 
 ```bash
 git switch main
-git merge sir-development
+git merge sir-model
 ```
 
   </template>
@@ -423,40 +423,32 @@ layout: two-cols-header
 
 # Practical 5 — Recovering changes
 
-::left::
+<span />
 
-Git lets us return to a known-good version.
+Remember when we changed the NumPy version in the Environments practical?
 
-**1. Make a temporary edit**
-
-Open `sir.py` and make a small, unwanted change.
-
-**2. Inspect the change**
+1. Inspect the change
 
 ```bash
-git diff
+git diff docker/requirements.txt
 ```
 
-::right::
-
-**3. Discard the edit**
+2. Restore the original version
 
 ```bash
-git restore sir.py
+git restore docker/requirements.txt
 ```
 
-**4. Verify**
+3. Verify
 
 ```bash
 git status
 ```
 
-The unwanted change should be gone.
-
-::bottom::
+The Docker requirements file should no longer be modified.
 
 ::note
-`git restore` discards uncommitted changes. Use it only when you're sure you don't need them.
+`git restore` discards uncommitted changes to tracked files. Make sure you no longer need them!
 ::
 
 ---
@@ -467,27 +459,29 @@ layout: two-cols-header
 
 ::left::
 
-**Explore your history**
+### Explore your history
 
-- Use `git log` to inspect earlier commits.
-- Use `git show` to inspect the changes introduced by a commit.
-- Compare two commits using `git diff`.
-- Explore the history using VS Code's Source Control view.
+- Use `git log` to inspect earlier commits
+- Use `git show` to inspect the changes introduced by a commit
+- Compare two commits using `git diff`
+- Explore history using VS Code's Source Control view
 
 ::right::
 
-**Explore branches**
+### Experiment with branches
 
-- List branches using `git branch -a`.
-- Switch between branches.
-- Compare their histories.
-- Create a temporary branch and experiment.
-- Return to `main` when finished.
+- List branches using `git branch -a`
+- Switch between branches
+- Compare their histories
+- Create a temporary branch and make an experimental change
+- Return to `main` when finished
 
 ::bottom::
 
 ::note
-Branches let us explore alternatives without immediately changing our main line of development.
+Git provides a record of changes and a safe starting point for experimentation
+::
+
 ::
 
 ---

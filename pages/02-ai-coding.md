@@ -520,10 +520,6 @@ Your repository contains the project specification and instructions, but no appl
 
 VS Code is our development environment.
 
-::center
-
-::
-
 - **Explorer** — browse project files
 - **Editor** — inspect and modify files
 - **Terminal** — run commands and tools
@@ -629,6 +625,22 @@ Inspect the results.
 ::question
 What did Ruff identify or change? Does this establish that the software behaves correctly?
 ::
+
+<!--
+Presenter demonstration:
+
+Add an unused variable to sir.py, for example:
+
+    unused = 42
+
+Run:
+    ruff check sir.py
+
+Show the F841 warning, then remove the variable.
+
+Explain that Ruff detects certain code-quality problems,
+but cannot establish that the SIR model is correct.
+-->
 
 ---
 

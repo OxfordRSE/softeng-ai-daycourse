@@ -469,9 +469,9 @@ Containers share the host operating system, but maintain their own filesystem an
 
 <span />
 
-We will run the **same Python application** with different versions of NumPy.
+We will run the same Python application with different versions of NumPy.
 
-Create `docker/app.py`:
+Inspect `docker/app.py`:
 
 ```python
 import numpy as np
@@ -480,7 +480,7 @@ print(f"NumPy version: {np.__version__}")
 print(np.float_(3.14))
 ```
 
-Create `docker/requirements.txt`:
+Note the requirements in `docker/requirements.txt`:
 
 ```text
 numpy>=1.26,<2

@@ -267,7 +267,7 @@ Remember isolated environments? GitHub Actions runs our checks in a fresh enviro
 Open your repository on GitHub.
 
 1. Select **Actions** → **New workflow**.
-2. Choose the **Python package** workflow template.
+2. Choose the **Python Application** workflow template.
 3. Inspect the generated workflow:
    - When does it run?
    - Which Python versions does it test?
@@ -465,12 +465,14 @@ copilot
 Switch to `Agent` mode and provide the prompt:
 
 ```text
-Create a Streamlit dashboard for our SIR simulator.
-Reuse simulate_sir() without changing the numerical model.
-Allow users to adjust parameters and visualise S, I and R.
-Record dependencies and document how to run the app.
-Create a feature branch, commit and push the changes, then open a PR against main in this repository.
-Run the existing checks. Do not merge the PR.
+Implement a Streamlit dashboard for the SIR simulator in a new file named `app.py`.
+Reuse the existing `simulate_sir()` function. Do not duplicate or modify the numerical model.
+Allow users to adjust the simulation parameters and visualise the susceptible, infected and recovered populations over time.
+Record dependencies in `requirements.txt` and update `README.md` with instructions for running the application.
+Create a feature branch, commit and push the changes, and open a pull request against `main` in this repository.
+Run the existing checks and report the results.
+
+Do not merge the pull request.
 ```
 
   </template>
@@ -530,13 +532,13 @@ git pull
 **3. Install dependencies**
 
 ```bash
-python -m pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 **4. Launch Streamlit**
 
 ```bash
-python -m streamlit run app.py
+streamlit run app.py
 ```
 
 Open the forwarded port in Codespaces.

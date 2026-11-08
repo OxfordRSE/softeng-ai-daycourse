@@ -1,31 +1,23 @@
 # Software Engineering in the AI Era
 
-A one-day, hands-on course from [Oxford Research Software Engineering](https://www.rse.ox.ac.uk/) introducing core software engineering practices in the context of AI-assisted development.
+**Software Engineering in the AI Era** is a hands-on course exploring how software engineering can help researchers make the most of AI-assisted development.
+
+Using a small research software project, participants will work with AI coding agents to design, build, test and improve software. Along the way, they will learn essential practices for managing dependencies, tracking changes and collaborating with others.
+
+The course emphasises how to steer AI-assisted development through clear requirements, thoughtful design and effective testing, so that researchers can make use of increasingly capable coding agents while understanding and evaluating the software they produce.
 
 <div style="text-align: center">
 <a href="https://blog.oxrse.uk/softeng-ai-daycourse/">
 <img src="img/cover.svg" width="75%" style="border: 1px solid black" alt="Slides" />
 </a>
 
-[View the slides](https://OxfordRSE.github.io/softeng-daycourse/)
+[View the slides](https://OxfordRSE.github.io/softeng-ai-daycourse/)
 </div>
-
-The course covers software design, coding, environments, testing, version control and collaboration, with practical exercises using GitHub Codespaces and AI coding assistants.
 
 ## Course materials
 
-- **[Presentation slides](https://blog.oxrse.uk/softeng-ai-daycourse/)**
-- **[Research Data Checker](https://github.com/OxfordRSE/softeng-ai-daycourse-data-checker)** — accompanying code for the practical exercises.
+Slides:
+- [Presentation slides](https://blog.oxrse.uk/softeng-ai-daycourse/)
 
-## Instructor preparation
-
-**The following should be completed before each delivery of the course.**
-
-To demonstrate AI coding assistants without modifying the upstream repository:
-- [ ] Fork the [Research Data Checker](https://github.com/OxfordRSE/softeng-ai-daycourse-data-checker) repository
-- [ ] Enable **Issues** (Settings tab) and **GitHub Actions** (Actions tab) in your fork
-- [ ] Create a copy of the prepared [upstream issue](https://github.com/OxfordRSE/softeng-ai-daycourse-data-checker/issues/1) in your fork (manually)
-- [ ] Assign the issue to an AI coding assistant in your fork
-
-General checks
-- [ ] Check that GitHub Actions are enabled in the upstream repository for participant PRs.
+Project repositories:
+- [Susceptible-Infected-Recovered (SIR) Model ](https://github.com/OxfordRSE/softeng-ai-daycourse-sir-model)
