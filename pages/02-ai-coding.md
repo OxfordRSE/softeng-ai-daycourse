@@ -503,8 +503,9 @@ We'll use **GitHub Codespaces** as our development computer throughout the day.
 </CourseProject>
 
 2. Click **Use this template** → **Create a new repository**.
-3. In your new repository, select **Code → Codespaces → Create codespace on main**.
-4. Wait for VS Code to open in your browser.
+3. Switch **Include all branches** to **On** (the repository contains recovery points, if needed).
+4. In your new repository, select **Code → Codespaces → Create codespace on main**.
+5. Wait for VS Code to open in your browser.
 
 ::note
 Your repository contains the project specification and instructions, but no application implementation.
@@ -644,6 +645,41 @@ but cannot establish that the SIR model is correct.
 
 ---
 
+# Practical 2 — Checkpoint
+
+<span />
+
+Review what was produced:
+
+- Does the application satisfy `DESIGN.md`?
+- Is the implementation simple and understandable?
+- Did the agent introduce unnecessary dependencies or files?
+- Can you explain how the program works?
+- What evidence do we have that the results are correct?
+
+::note
+A working application is a starting point, not evidence that every requirement has been satisfied.
+::
+
+---
+
+# Going further — Explore and extend
+
+<span />
+
+Finished the core practical?
+
+Choose a challenge:
+
+- **Improve the CLI:** Add an option to display daily S, I and R values
+- **Investigate behaviour:** Explore how the ratio of transmission to recovery affects epidemic growth
+- **Improve documentation:** Ask AI to add a usage example to `README.md`
+- **Try another interface:** Use Copilot CLI in the terminal to inspect or extend the project
+
+Keep changes small and review what the agent produces.
+
+---
+
 # Teaching AI our conventions
 
 <span />
@@ -665,39 +701,4 @@ Before completing a coding task:
 `DESIGN.md` describes what we're building.
 
 `AGENTS.md` describes how we expect AI to work.
-::
-
----
-
-# Going further — Explore and extend
-
-<span />
-
-Finished the core practical?
-
-Choose a challenge:
-
-- **Improve the CLI:** Add an option to display daily S, I and R values.
-- **Investigate behaviour:** Explore how the ratio of transmission to recovery affects epidemic growth.
-- **Improve documentation:** Ask AI to add a usage example to `README.md`.
-- **Try another interface:** Use Copilot CLI in the terminal to inspect or extend the project.
-
-Keep changes small and review what the agent produces.
-
----
-
-# Practical 2 — Checkpoint
-
-<span />
-
-Review what was produced:
-
-- Does the application satisfy `DESIGN.md`?
-- Is the implementation simple and understandable?
-- Did the agent introduce unnecessary dependencies or files?
-- Can you explain how the program works?
-- What evidence do we have that the results are correct?
-
-::note
-A working application is a starting point, not evidence that every requirement has been satisfied.
 ::

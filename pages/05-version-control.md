@@ -396,8 +396,8 @@ git commit -m "Implement and test SIR simulator"
   <template #sir>
 
 ```bash
-git switch main
-git merge sir-model
+git switch main  # the new files disappear
+git merge sir-model  # the files reappear
 ```
 
   </template>
@@ -406,7 +406,7 @@ git merge sir-model
 **6. Inspect the history**
 
 ```bash
-git log --oneline --graph --all
+git log --oneline --graph
 ```
 
 ::note
@@ -436,7 +436,7 @@ git diff docker/requirements.txt
 2. Restore the original version
 
 ```bash
-git restore docker/requirements.txt
+git restore docker/
 ```
 
 3. Verify

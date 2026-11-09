@@ -506,6 +506,7 @@ From the `docker/` directory:
 **1. Build and run with NumPy 1.x**
 
 ```bash
+cd docker
 docker build -t numpy-demo:v1 .
 docker run --rm numpy-demo:v1
 ```
@@ -528,6 +529,9 @@ docker run --rm numpy-demo:v2
 ```
 
 The application now fails because NumPy 2 removed `np.float_`.
+
+Finally, return to the parent directory:
+`cd ..`
 
 ::bottom::
 
@@ -558,6 +562,10 @@ Consider:
 ::note
 Isolation preserves environments. Compatibility still requires engineering decisions.
 ::
+
+<!--
+Might be fun to ask the audience for a show of hands on which option they would choose.
+-->
 
 ---
 

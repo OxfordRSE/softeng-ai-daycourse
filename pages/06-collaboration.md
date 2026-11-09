@@ -163,7 +163,7 @@ You've committed and merged your code and tests locally.
 **1. Check your current branch**
 
 ```bash
-git status
+git status  # Your branch is ahead of 'origin/main' by 1 commit.
 ```
 
 **2. Push to GitHub**
@@ -267,13 +267,13 @@ Remember isolated environments? GitHub Actions runs our checks in a fresh enviro
 Open your repository on GitHub.
 
 1. Select **Actions** → **New workflow**.
-2. Choose the **Python Application** workflow template.
+2. Select **Configure** on the **'Python Application'** workflow template.
 3. Inspect the generated workflow:
    - When does it run?
-   - Which Python versions does it test?
+   - Which operating systems does it use?
+   - Which Python version does it test?
    - Which commands does it execute?
-4. Adjust the Python versions to match your project.
-5. Commit the workflow and inspect the results under **Actions**.
+4. Commit the workflow and inspect the results under **Actions**.
 
 ::question
 What evidence does a successful workflow provide?
@@ -462,7 +462,7 @@ copilot
 
 **2. Delegate the task**
 
-Switch to `Agent` mode and provide the prompt:
+Switch to `Autopilot` / `Build` mode and provide the prompt:
 
 ```text
 Implement a Streamlit dashboard for the SIR simulator in a new file named `app.py`.
@@ -500,6 +500,8 @@ Open the pull request proposed by your coding agent.
 4. **Checks** — do the existing tests and CI pass?
 5. **Scope** — did the agent change anything unrelated?
 
+For today, ask github copilot to review the pull request.
+
 ::question
 Would you accept this contribution? What evidence supports your decision?
 ::
@@ -510,38 +512,34 @@ layout: two-cols-header
 
 # Practical 6e — Run your application!
 
-<span />
+::left::
 
 Let's see what your coding agent has built.
 
-::left::
-
-**1. Merge the pull request**
-
-On GitHub, select **Merge pull request** after reviewing the changes and checks.
-
-**2. Update your Codespace**
-
-```bash
-git switch main
-git pull
-```
-
-::right::
-
-**3. Install dependencies**
+**1. Install dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-**4. Launch Streamlit**
+**2. Launch Streamlit**
 
 ```bash
 streamlit run app.py
 ```
 
 Open the forwarded port in Codespaces.
+
+::right::
+
+On GitHub, **Merge the pull request**.
+
+**Pull down changes**
+
+```bash
+git switch main
+git pull
+```
 
 ::bottom::
 
