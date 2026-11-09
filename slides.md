@@ -32,6 +32,10 @@ src: ./pages/00-introduction.md
 ---
 
 ---
+src: ./pages/project-selection.md
+---
+
+---
 src: ./pages/toc.md
 ---
 
@@ -81,10 +85,6 @@ src: ./pages/toc.md
 
 ---
 src: ./pages/05-version-control.md
----
-
----
-src: ./pages/break.md
 ---
 
 ---

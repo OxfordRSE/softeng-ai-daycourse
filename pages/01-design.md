@@ -14,7 +14,8 @@ routeAlias: design
 <span />
 
 ::note
-AI makes it tempting to start coding before we've clarified the problem or given it sufficient context
+In exploratory research, writing software is often part of discovering the requirements.
+AI makes implementation faster, but we still need to understand what we're trying to achieve.
 ::
 
 ::v-click
@@ -31,23 +32,27 @@ These are related questions, but they are not the same.
 
 # Motivating problem
 
+<CourseProject>
+  <template #sir>
+
 <span />
 
-We want a tool that checks research data before analysis.
+A research group wants an **interactive dashboard for exploring epidemic models**.
 
-What does **“checks the data”** actually mean?
+What should the dashboard actually do?
 
-- Values within expected ranges?
-- Required observations present?
-- Duplicate records?
-- Units correct?
-- Metadata complete?
+<li>Explore different transmission and recovery rates?</li>
+<li>Compare epidemic scenarios?</li>
+<li>Introduce vaccination or interventions?</li>
+<li>Visualise changes over time?</li>
+<li>Export results for further analysis?</li>
 
-Different researchers could very reasonably make very different assumptions.
+  </template>
+</CourseProject>
 
-<!--
-Metadata - a description of the data; its not much use having a column of numbers if you dont know what they represent or what units they have been measured in.
--->
+Different researchers could reasonably make different design decisions.
+
+<ProjectSelector />
 
 ---
 layout: two-cols-header
@@ -59,13 +64,20 @@ layout: two-cols-header
 
 **The initial request**
 
-> I want to check my research data before analysis.
+<CourseProject>
+  <template #sir>
+
+Build an interactive dashboard for exploring epidemics.
 
 This leaves important questions unanswered:
 
-- What makes an observation invalid?
-- Which checks are needed?
-- What should happen when a problem is found?
+<li>Who will use it?</li>
+<li>Which model should it implement?</li>
+<li>Which parameters can users change?</li>
+<li>What should the results communicate?</li>
+
+  </template>
+</CourseProject>
 
 ::right::
 
@@ -73,11 +85,17 @@ This leaves important questions unanswered:
 
 **A more useful specification**
 
-The checker should:
+<CourseProject>
+  <template #sir>
 
-- Identify measurements outside a configurable range
-- Report problems without modifying the input data
-- Preserve existing behaviour when no limits are supplied
+The dashboard should:
+<li>Use a deterministic SIR model</li>
+<li>Allow users to adjust transmission and recovery parameters</li>
+<li>Display susceptible, infected and recovered populations over time</li>
+<li>Clearly communicate the model's assumptions</li>
+
+  </template>
+</CourseProject>
 
 ::
 
@@ -88,6 +106,8 @@ The checker should:
 AI is quick to offer solutions. Use conversation to explore the problem first: question its assumptions, consider alternatives and clarify what you actually need.
 ::
 ::
+
+<ProjectSelector />
 
 <!--
 Ask for one or two suggested prompts before revealing the specification.
@@ -172,7 +192,7 @@ Record the decisions that matter:
 - Constraints and domain decisions
 - Open questions
 
-A design document preserves decisions as reusable context for humans and AI
+A Markdown document such as `DESIGN.md` can preserve agreed requirements, assumptions and constraints as reusable context for humans and coding agents.
 
 When a new conversation or coding-agent task begins, provide the document rather than reconstructing the project from memory or from the code.
 
@@ -182,96 +202,89 @@ For substantial work, a short dated decision log can also preserve what was trie
 
 ---
 
-# Codespaces
+# Practical 1 — Explore the problem
 
-::center
-
-<a href="https://github.com/features/codespaces" target="_blank" rel="noopener noreferrer"><img src="../img/codespaces.png" alt="GitHub Codespaces" class="border border-gray-300" style="width: 70%;" /></a>
-
-[github.com/codespaces](https://www.github.com/codespaces) gives everyone a common, pre-configured development environment.
-
-For today, think of the Codespace as the machine on which you are developing.
-
-::
-
----
-
-# Practical 1 — Open your development environment
+<CourseProject>
+  <template #sir>
 
 <span />
 
-We'll use **GitHub Codespaces** as our development computer throughout the day.
+A research group wants to develop an interactive dashboard for exploring how an epidemic might develop under different assumptions.
 
-1. Open the course **Research Data Checker** repository on GitHub.
+The dashboard will use a simple SIR model.
 
-<div style="height: 15px;" />
+However, its **requirements, intended users and limitations** have not yet been established.
 
-::center
-[https://github.com/OxfordRSE/softeng-ai-daycourse-data-checker](https://github.com/OxfordRSE/softeng-ai-daycourse-data-checker)
-::
-
-<div style="height: 20px;" />
-
-2. Click **Fork → Create a new fork**.
-3. In your fork, select **Code → Codespaces → Create codespace on main**
-3. Wait for VS Code to open in your browser
+Your task is to use ChatGPT to explore the design.
 
 ::note
-Everyone has the same development environment, ready to use throughout the course
+The objective is to explore requirements, not to write code.
 ::
 
----
+  </template>
+</CourseProject>
 
-# Practical 1 — Research Data Checker brief
-
-<span />
-
-A research group receives CSV files containing a numeric column named `measurement`.
-
-Before analysis, they want to identify potentially problematic values without changing the original data.
-
-The checker currently uses minimum and maximum limits of 0 and 100. They want to be able to supply different limits when running the checker.
+<ProjectSelector />
 
 ---
 
-# Practical 1 — Explore requirements with AI
+# Practical 1 — Discuss the design with AI
+
+<CourseProject>
+  <template #sir>
 
 <span />
 
-1. Open `instructor/practical-1-brief.md` in VS Code
-2. Open **Chat**, click **+** to include the file as context
-3. Ask AI:
+Open [chatgpt.com](https://chatgpt.com) and start a new conversation.
+
+Ask ChatGPT:
 
 ```text
-Before writing code, identify decisions needed for configurable minimum and maximum limits. Suggest simple options for each.
+I want to design an interactive dashboard for exploring
+a simple SIR epidemic model.
+
+Interview me to help establish the requirements.
+Ask one question at a time, explain alternatives where
+useful, and challenge my assumptions.
+
+Do not write code yet.
 ```
 
-4. Discuss with AI. You can make your own decisions or ask AI to suggest options. You can also ask it to challenge your assumptions
-
-5. Ask AI to summarise your decisions
+Discuss the design with AI. Make decisions, ask questions and explore alternatives.
 
 ::question
-Which decisions required your judgement rather than AI's?
+Which decisions require your judgement rather than AI's?
 ::
+
+  </template>
+</CourseProject>
+
+<ProjectSelector />
 
 ---
 
-# Practical 1 — Checkpoint
+# Practical 1 — Capture your decisions
 
 <span />
 
-We've explored the requirements and considered different approaches.
+Ask ChatGPT:
 
-Open `DESIGN.md` file in the repository root.
+```text
+Summarise our discussion as a concise Markdown design document.
 
-Compare it with your discussion:
+Include requirements, assumptions, constraints and open questions.
 
-- Which decisions did you reach independently?
-- Which requirements had you overlooked?
-- Are there any assumptions you would challenge?
+Distinguish agreed decisions from suggestions that still need consideration.
+```
+
+Review the document:
+
+- Does it accurately represent your decisions?
+- Has AI introduced assumptions you didn't agree to?
+- What remains unresolved?
 
 ::note
-A design document preserves agreed decisions as reusable context for future human and AI work
+A design discussion can become reusable context for future development.
 ::
 
 ---
@@ -280,9 +293,9 @@ A design document preserves agreed decisions as reusable context for future huma
 
 <span />
 
-Not every design question can be answered through discussion
+Not every design question can be answered through discussion.
 
-Sometimes the quickest way to resolve uncertainty is to **build a small prototype**
+Sometimes the quickest way to resolve uncertainty is to **build a small prototype**.
 
 A prototype helps us:
 
@@ -290,8 +303,4 @@ A prototype helps us:
 - Test an assumption
 - Discover missing requirements
 
-Prototypes are designed to explore ideas quickly, often without considering long-term structure or maintainability. What works well as a prototype may not be a good foundation for the final software.
-
-::note
-Use prototypes to learn about the design, not as a commitment to the final implementation
-::
+We've explored different possible designs. For the rest of today, we'll use a **common specification**.
