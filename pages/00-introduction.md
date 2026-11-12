@@ -241,26 +241,39 @@ layout: two-cols-header
 
 ### Industrial software development
 
-Software often addresses an **established need**
+Software often addresses an **established need** through a conventional [Software Development Life Cycle (SDLC)](https://www.ibm.com/think/topics/sdlc):
 
-- Requirements can be defined in advance
-- Investment in design and QA can be planned
-- Software is expected to be delivered and maintained
+1. Planning
+2. Requirements
+3. Design
+4. Implementation
+5. Testing
+6. Deployment
+7. Maintenance
 
 ::right::
+
+::v-click
 
 ### Exploratory research software
 
 Software is often part of **discovering what is needed**
 
 - Requirements emerge through experimentation
+- Design and implementation evolve together
 - Prototypes may change or be discarded
 - Engineering effort competes with scientific investigation
 
+::
+
 ::bottom::
 
+::v-click
+
 ::note
-When requirements are uncertain, the benefits of upfront design and QA are harder to predict
+Established requirements make it easier to plan rigorous design and quality assurance
+::
+
 ::
 
 ---
@@ -291,11 +304,9 @@ Code can be produced much faster than we can understand or verify it.
 
 ::bottom::
 
-The bottleneck shifts from **producing code** to **evaluating it**.
-
 ::v-click
 ::note
-Understanding, specification, judgement and evidence become increasingly valuable
+The bottleneck shifts from **producing code** to **evaluating it**
 ::
 ::
 
