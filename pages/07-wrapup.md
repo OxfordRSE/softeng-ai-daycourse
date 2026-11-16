@@ -66,6 +66,27 @@ Software correctness does not establish scientific validity.
 
 ---
 
+# Going further - Extending coding agents
+
+<span />
+
+We've learned to guide AI through **specifications**, **instructions**, **tests** and **review**.
+
+Two emerging conventions extend what coding agents can do:
+
+- **Agent Skills** - reusable instructions and workflows that teach agents how to perform specialised tasks
+- **Model Context Protocol (MCP)** - a standard for connecting AI applications to external tools and information sources
+
+These can make agents more capable, but also introduce new dependencies, permissions and trust boundaries.
+
+<br />
+
+::note
+More capabilities mean more responsibility for supervising what agents can access and do
+::
+
+---
+
 # Engineer proportionately
 
 <span />
